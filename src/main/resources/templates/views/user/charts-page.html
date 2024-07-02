@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--head-->
+<head th:replace="/user/fragments/head::head"></head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="/user/fragments/sidebar::sidebar"></div>
+        <!-- End Sidebar -->
+
+
+        <div class="col-md-9 content bg-dark">
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="charts-header">
+                    <div class="charts-bar row;">
+                        <h2>Top Songs This Week</h2>
+                    </div>
+                    <div class="category-charts">
+                        <a href="#">
+                            <button class="active">Songs</button>
+                        </a>
+                        <a href="#">
+                            <button>Artist</button>
+                        </a>
+                        <a href="#">
+                            <button>Album</button>
+                        </a>
+
+                    </div>
+                </div>
+                <!-- Replace with your main content elements -->
+                <div class="list-songs-charts">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="result row position-1">
+                                    <span class="position">1</span>
+                                    <img src="/image/album1.jpg" alt="#">
+                                    <label>All Too Well - Taylor's Version</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="result row position-2">
+                                    <span class="position">2</span>
+                                    <img src="/image/album2.jpg" alt="#">
+                                    <label>Taylor Swift</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="result row position-3">
+                                    <span class="position">3</span>
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="result row position-4">
+                                    <span class="position">4</span>
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="result row position-5">
+                                    <span class="position">5</span>
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- Player Bar -->
+    <div th:replace="/user/fragments/playerbar::playerbar"></div>
+
+
+</div>
+
+<!-- Footer -->
+<div th:replace="/user/fragments/footer::footer"></div>
+<!-- End Footer -->
+</div>
+
+</body>
+
+</html>

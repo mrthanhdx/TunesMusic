@@ -1,0 +1,169 @@
+.main-content {
+    padding: 20px;
+}
+
+.list-songs-charts {
+    background-color: #2d3135;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 1000px; /* Adjust based on your requirement */
+    overflow-y: auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.list-songs-charts ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-songs-charts li {
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.list-songs-charts a {
+    text-decoration: none;
+    border-radius: 10px;
+
+}
+
+.list-songs-charts .result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #3a3f44;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.list-songs-charts .result:hover {
+    background-color: #a09696;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.list-songs-charts img {
+    border-radius: 10px;
+    margin-right: 10px;
+    width: 100px; /* Adjust based on your image size */
+    height: 80px; /* Adjust based on your image size */
+    object-fit: cover;
+}
+
+.list-songs-charts label {
+    color: aliceblue;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    flex: 1; /* Make label take up remaining space */
+    cursor: pointer;
+}
+
+.list-songs-charts .position {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #3a3f44; /* Same as list item background */
+    color: #f3f1ec; /* Gold color for position */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.list-songs-charts .result:hover .position {
+    background-color: #444; /* Darker background on hover */
+    color: #f1d60d; /* Gold color for position on hover */
+}
+
+/* Special styles for top positions */
+.list-songs-charts .position-1 {
+    background-color: #ffcc00; /* Gold color for position 1 */
+    color: #000; /* Dark text color for better contrast */
+    font-weight: bold;
+}
+
+.list-songs-charts .position-2 {
+    background-color: #c0c0c0; /* Silver color for position 2 */
+    color: #000; /* Dark text color for better contrast */
+    font-weight: bold;
+}
+
+.list-songs-charts .position-3 {
+    background-color: #cd7f32; /* Bronze color for position 3 */
+    color: #000; /* Dark text color for better contrast */
+    font-weight: bold;
+}
+
+/* Styles for positions 4 and 5 */
+.list-songs-charts .position-4,
+.list-songs-charts .position-5 {
+    font-weight: bold;
+}
+.charts-bar{
+    text-align: center;
+}
+
+.charts-bar h2{
+    font-size: 30px;
+}
+
+.charts-header {
+    height: 130px;
+    width: 80%;
+    background-color: #2d3135;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: aliceblue;
+    margin: 0 auto; /* Centers the header */
+}
+
+.charts-header h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.charts-header .category-charts {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.charts-header .category-charts a {
+    text-decoration: none;
+}
+
+.charts-header .category-charts button {
+    background-color: #444;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: aliceblue;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+.charts-header .category-charts button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.charts-header .category-charts button:active {
+    transform: translateY(0);
+}
+
+.charts-header .category-charts button.active {
+    background-color: #c4c1ba;
+    text-decoration: none;
+}
+
+

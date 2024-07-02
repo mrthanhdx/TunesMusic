@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/user/fragments/head::head"></head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div th:replace="/user/fragments/sidebar::sidebar"></div>
+
+            <!-- End Sidebar -->
+
+
+            <div class="col-md-9 content bg-dark">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Replace with your main content elements -->
+                    <div class="playlist-page-header">
+                        <h1 class="title page">Your Playlist</h1>
+
+                        <div class="row list-playlist">
+                            <div class="block-content col-1">
+                                <a href="#">
+                                    <img src="/image/album1.jpg" alt="album1">
+                                    <label>The Red - Taylor Swift</label>
+                                </a>
+                            </div>
+                            <div class="block-content col-1">
+                                <a href="#">
+                                    <img src="/image/album1.jpg" alt="album1">
+                                    <label>The Red - Taylor Swift</label>
+                                </a>
+                            </div>
+                            <div class="block-content col-1">
+                                <a href="#">
+                                    <img src="/image/album1.jpg" alt="album1">
+                                    <label>The Red - Taylor Swift</label>
+                                </a>
+                            </div>
+                            <div class="block-content col-1">
+                                <a href="#">
+                                    <img src="/image/album1.jpg" alt="album1">
+                                    <label>The Red - Taylor Swift</label>
+                                </a>
+                            </div>
+                            <div class="block-content col-1">
+                                <a href="#">
+                                    <img src="/image/album1.jpg" alt="album1">
+                                    <label>The Red - Taylor Swift</label>
+                                </a>
+                            </div>
+                            
+                        </div>
+    
+                    </div>
+
+                    <div class="list-songs">
+                        <ul>
+                            <li>
+                                <div class="song row">
+                                    <img src="/image/album1.jpg" alt="#">
+                                    <label>All Too Well-Taylor version</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="song row">
+                                    <img src="/image/album2.jpg" alt="#">
+                                    <label>Taylor Swift</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="song row">
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="song row">
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="song row">
+                                    <img src="/image/album3.jpg" alt="#">
+                                    <label>Red</label>
+                                </div>
+                            </li>
+                            
+
+                        </ul>
+                       <div> <a href="/User/favorite-songs/show-all"><button style="margin-top: 12px;">show all</button></a></div>
+                    </div>
+                    
+                </div>
+                <!-- End Main Content -->
+            </div>
+        </div>
+        <!-- Music Player -->
+        <div th:replace="/user/fragments/playerbar::playerbar"></div>
+
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="/user/fragments/footer::footer"></div>
+    <!-- End Footer -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+.favorite-page-header {
+    height: 130px;
+    width: 80%;
+    background-color: #2d3135;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: aliceblue;
+  }
+  
+  
+  .favorite-page-header h1 {
+    color: aliceblue;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .list-favorite-songs {
+    margin-top: 5%;
+    width: 100%;
+    background-color: #2d3135;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 1000px; /* Adjust based on your requirement */
+  }
+  
+  .list-favorite-songs ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .list-favorite-songs li {
+    margin-bottom: 15px;
+  }
+  
+  .list-favorite-songs .result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #3a3f44;
+    transition: background-color 0.3s;
+  }
+  
+  .list-favorite-songs .result:hover {
+    background-color: #444;
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+  
+  .list-favorite-songs img {
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 100px; /* Adjust based on your image size */
+    height: 80px; /* Adjust based on your image size */
+    object-fit: cover;
+  }
+  
+  .list-favorite-songs label {
+    color: aliceblue;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    width: 85%;
+    margin-right: 5%;
+  }
+  
+  .list-favorite-songs label:hover {
+    cursor: pointer;
+  }
+  
+  .list-favorite-songs button {
+    background-color: #444;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: aliceblue;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+  }
+  
+  .list-favorite-songs button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+  }
+  
+  .list-favorite-songs button:active {
+    transform: translateY(0);
+  }
+  
+ 
+  .category-favorite-songs {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.category-favorite-songs a {
+    text-decoration: none;
+}
+
+.category-favorite-songs a button {
+    background-color: #444;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: aliceblue;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+.category-favorite-songs a button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.category-favorite-songs a button:active {
+    transform: translateY(0);
+}
+
+.category-favorite-songs a button.active {
+    background-color: #c4c1ba;
+    text-decoration: none;
+}
+
+.favorite-page-header {
+  height: 180px;
+  width: 80%;
+  background-color: #2d3135;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: aliceblue;
+}
