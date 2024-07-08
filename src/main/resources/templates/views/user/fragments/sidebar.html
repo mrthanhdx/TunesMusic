@@ -1,26 +1,26 @@
 <div class="col-md-3 sidebar bg-dark" th:fragment="sidebar">
     <div class="logo">
-        <img src="/img/logo.jpg" style="width: 35%;" alt="Logo">
+        <a href="/tunesmusic/home"><img th:src="@{/img/logo.jpg}" style="width: 35%;" alt="Logo"></a>
     </div>
     <br>
     <div class="menu">
         <label class="label-text">Menu</label>
         <ul>
-            <li><a class="btn btn-dark menu-active" href="/tunesmusic/home">
+            <li><a class="btn btn-dark button-sidebar " href="/tunesmusic/home">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-house-door-fill" viewBox="0 0 16 16">
                     <path
                             d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
                 </svg>
                 Home</a></li>
-            <li><a class="btn btn-dark" href="/tunesmusic/search">
+            <li><a class="btn btn-dark button-sidebar" href="/tunesmusic/search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-search" viewBox="0 0 16 16">
                     <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg>
                 Search</a></li>
-            <li><a class="btn btn-dark" href="/tunesmusic/charts">
+            <li><a class="btn btn-dark button-sidebar" href="/tunesmusic/charts">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
                     <path
@@ -33,14 +33,14 @@
     <div class="menu">
         <label class="label-text">Library</label>
         <ul>
-            <li><a class="btn btn-dark" href="/tunesmusic/favorite-song">
+            <li><a class="btn btn-dark button-sidebar" href="/tunesmusic/favorite-song">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-heart-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                           d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                 </svg>
                 Favorite Songs</a></li>
-            <li><a class="btn btn-dark" href="/tunesmusic/playlist">
+            <li><a class="btn btn-dark button-sidebar" href="/tunesmusic/playlist">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-music-note-list" viewBox="0 0 16 16">
                     <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2" />
@@ -50,7 +50,7 @@
                           d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5" />
                 </svg>
                 Playlist</a></li>
-            <li><a class="btn btn-dark" href="/tunesmusic/artist-following">
+            <li><a class="btn btn-dark button-sidebar" href="/tunesmusic/artist-following">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-person-check" viewBox="0 0 16 16">
                     <path
@@ -65,7 +65,7 @@
     <div class="menu">
         <label class="label-text">Account</label>
         <ul>
-            <li><a class="btn btn-dark" href="#">
+            <li><a class="btn btn-dark button-sidebar" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -76,4 +76,16 @@
                 Log Out</a></li>
         </ul>
     </div>
+    <script th:inline="javascript" th:src="@{/js/sidebar.js}">
+        /*<![CDATA[*/
+        function toggleMenuActive(element) {
+            var elements = document.querySelectorAll('.button-sidebar');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].classList.remove('menu-active');
+            }
+            element.classList.add('menu-active');
+        }
+        /*]]>*/
+    </script>
+
 </div>

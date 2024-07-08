@@ -1,9 +1,9 @@
 <div class="music-player fixed-player" th:fragment="playerbar">
-    <img src="/img/album1.jpg" alt="Album Cover" />
+    <img th:src="${trackPlay != null} ? ${trackPlay.sourceCoverImage} : '/img/logo.jpg'" alt="Album Cover" />
     <div class="info">
-        <h1>Red Taylor's Version</h1>
+        <h1 th:text="${trackPlay != null} ? ${trackPlay.trackName} : 'Red Taylor\'s Version'"></h1>
         <br>
-        <h2>Taylor Swift</h2>
+        <h2 th:text="${trackPlay != null} ? ${trackPlay.artist.artistName} : 'Taylor Swift'"></h2>
     </div>
     <div id="group1">
         <div class="control">
@@ -13,9 +13,9 @@
             <div class="btn btn-prev">
                 <i class="fa-solid fa-step-backward"></i>
             </div>
-            <div class="btn btn-toggle-play">
-                <i class="fas fa-pause icon-pause "></i>
-                <i class="fas fa-play icon-play active" ></i>
+            <div class="btn btn-toggle-play" id="btnPlay">
+                <i class="fas fa-pause icon-pause"></i>
+                <i class="fas fa-play icon-play"></i>
             </div>
             <div class="btn btn-next">
                 <i class="fas fa-step-forward"></i>
@@ -27,6 +27,6 @@
         <div class="progress-container">
             <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
         </div>
-        <audio id="audio" src=""></audio>
+        <audio id="audio" th:src="${trackPlay != null} ? ${trackPlay.sourceAudio} : ''"></audio>
     </div>
 </div>

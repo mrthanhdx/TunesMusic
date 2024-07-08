@@ -1,0 +1,9 @@
+package com.tunesmusic.service;
+
+import com.tunesmusic.model.Track;
+
+import java.util.List;
+
+public interface TrackService extends CommonService<Track>{
+    List<Track> findTop5Track();
+}

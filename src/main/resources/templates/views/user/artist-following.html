@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <!--    head-->
-<head th:replace="/user/fragments/head::head"></head>
+<head th:replace="~{/user/fragments/head::head}"></head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div th:replace="/user/fragments/sidebar::sidebar"></div>
+            <div th:replace="~{/user/fragments/sidebar::sidebar}"></div>
             <!-- End Sidebar -->
 
 
@@ -129,13 +129,15 @@
             </div>
         </div>
         <!-- Music Player -->
-        <div th:replace="/user/fragments/playerbar::playerbar"></div>
+        <div th:replace="~{/user/fragments/playerbar::playerbar}"></div>
     </div>
 
     <!-- Footer -->
-   <div th:replace="/user/fragments/footer::footer"></div>
+   <div th:replace="~{/user/fragments/footer::footer}"></div>
     <!-- End Footer -->
     </div>
+
+    <div th:replace="~{/user/fragments/foot::foot}"></div>
 </body>
 
 </html>

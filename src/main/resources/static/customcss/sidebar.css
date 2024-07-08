@@ -246,19 +246,25 @@ html, body {
     text-align: center;
 }
 
-.icon-play, .icon-pause {
-    display: none;
-}
 
-.active {
-    display: inline;
-}
 
 .control {
     display: flex;
     justify-content: center;
 }
+.control .icon-pause{
+    display: none;
+}
+.control .icon-play{
+    display: inline-block;
+}
+.control.playing .icon-pause{
+    display: inline-block;
+}
 
+.control.playing .icon-play{
+    display: none;
+}
 .progress {
     width: 80%;
     height: 6px;
