@@ -12,5 +12,8 @@ public interface TrackRepository extends JpaRepository<Track,Long> {
     @Query(value = "select * from Track LIMIT 5",nativeQuery = true)
     List<Track> findTop5Track();
 
+    @Query(value = "SELECT * FROM track WHERE track_name LIKE %?1%", nativeQuery = true)
+    List<Track> findTrackByTrackName(String trackname);
+
 
 }

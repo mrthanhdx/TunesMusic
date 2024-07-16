@@ -38,4 +38,9 @@ public class TrackServiceImpl implements TrackService {
     public List<Track> findTop5Track() {
         return trackRepository.findTop5Track();
     }
+
+    @Override
+    public List<Track> findTrackByTrackName(String keyword) {
+        return trackRepository.findTrackByTrackName(keyword);
+    }
 }

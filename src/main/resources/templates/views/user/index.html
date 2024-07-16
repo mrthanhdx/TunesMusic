@@ -16,7 +16,7 @@
                     <label class="content-title">What do you listen to today?</label>
                     <div class="row list-content">
                         <div class="block-content song-rcm" th:each="track: ${listTrack}">
-                            <a th:href="@{/tunesmusic/playsong(id=${track.id})}">
+                            <a class="ajax-link" th:href="@{/tunesmusic/playsong(id=${track.id})}">
                                 <img th:src="@{''+${track.sourceCoverImage}}" alt="Album Cover">
                                 <label th:text="${track.trackName}+'-'+${track.artist.artistName}"></label>
                             </a>
@@ -28,40 +28,16 @@
                         var trackList = /*[[${listTrack}]]*/ [];
                         /*]]>*/
                     </script>
-                    
+
                     <br>
 
 
                     <label class="content-title">Album Hot 2024</label>
                     <div class="row list-content">
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
+                        <div class="block-content" th:each="album: ${listAlbum}">
+                            <a th:href="@{/tunesmusic/album(id=${album.id})}">
+                                <img th:src="@{${album.sourceCoverPhoto}}">
+                                <label th:text="${album.title}+'-'+${album.artist.artistName}"></label>
                             </a>
                         </div>
                     </div>
@@ -70,40 +46,17 @@
 
                     <label class="content-title">Artist Viral </label>
                     <div class="row list-content">
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
+                        <div class="block-content" th:each="artist : ${listArtistViral}">
+                            <a th:href="@{/tunesmusic/artist(id=${artist.id})}">
+                                <img th:src="@{${artist.user.profilePicture}}" alt="artist profile picture">
+                                <label th:text="${artist.artistName}"></label>
                             </a>
                         </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
-                        <div class="block-content">
-                            <a href="#">
-                                <img src="/img/album1.jpg" alt="album1">
-                                <label>The Red - Taylor Swift</label>
-                            </a>
-                        </div>
+
                     </div>
 
 
-                    <label class="content-title">Maybe you will like</label>
+                    <label class="content-title">Playlist for your mood</label>
                     <div class="row list-content">
                         <div class="block-content">
                             <a href="#">
@@ -152,6 +105,9 @@
 
 
     <div th:replace="~{/user/fragments/foot::foot}"></div>
+
+    <script th:src="@{/js/home.js}"></script>
+
 </body>
 
 </html>

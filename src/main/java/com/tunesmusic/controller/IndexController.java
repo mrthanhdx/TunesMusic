@@ -1,6 +1,8 @@
 package com.tunesmusic.controller;
 
 import com.tunesmusic.model.Track;
+import com.tunesmusic.service.AlbumService;
+import com.tunesmusic.service.ArtistService;
 import com.tunesmusic.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,18 @@ public class IndexController {
     @Autowired
     TrackService trackService;
 
+    @Autowired
+    AlbumService albumService;
+
+    @Autowired
+    ArtistService artistService;
+
     @GetMapping("")
     public String index(Model model){
         List<Track> trackList = trackService.findTop5Track();
         model.addAttribute("listTrack",trackList);
-
+        model.addAttribute("listAlbum",albumService.findTop5Album());
+        model.addAttribute("listArtistViral",artistService.findList5Artist());
         return "/user/index";
     }
 
@@ -29,9 +38,14 @@ public class IndexController {
     public String home(){
         return "redirect:/tunesmusic";
     }
-
+    @GetMapping("/")
+    public String home1(){
+        return "redirect:/tunesmusic";
+    }
     @GetMapping("/search")
-    public String openSearchPage(){
+    public String openSearchPage(Model model){
+        List<Track> trackList = trackService.findTop5Track();
+        model.addAttribute("listTrack",trackList);
         return "/user/search-page";
     }
 

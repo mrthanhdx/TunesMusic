@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--head-->
-<head th:replace="/user/fragments/head::head"></head>
+<head th:replace="~{/user/fragments/head::head}"></head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div th:replace="/user/fragments/sidebar::sidebar"></div>
+            <div th:replace="~{/user/fragments/sidebar::sidebar}"></div>
 
             <!-- End Sidebar -->
 
@@ -17,16 +17,18 @@
                     <!-- Replace with your main content elements -->
                     <div class="search-header">
                         <div class="search-bar row;">
-                            <input class="search-input" type="text" placeholder="What do you want to play ?">
-                            <a href="/user/search?search-name=#"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                </svg></a>
+                            <form id="searchForm" onsubmit="handleSearch(event)">
+                                <input class="search-input" id="keysearch" name="keysearch" type="text" placeholder="What do you want to play ?">
+                                <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
+
                         <div class="category-search">
-                            <a href="#"><button class="active">All</button></a>
-                            <a href="#"><button>Songs</button></a>
+                            <a href="#"><button class="active">Song</button></a>
                             <a href="#"><button>Artist</button></a>
                             <a href="#"><button>Album</button></a>
 
@@ -35,47 +37,27 @@
 
                     <div class="list-result-search">
                         <ul>
-                            <li>
+                            <li th:each="track:${listTrack}">
                                 <div class="result row">
-                                    <img src="/image/album1.jpg" alt="#">
-                                    <label>All Too Well-Taylor version</label>
+                                    <a class="ajax-link" style="width: 100%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                        <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
+                                        <label th:text="${track.trackName}"></label>
+                                    </a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album2.jpg" alt="#">
-                                    <label>Taylor Swift</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            
-
                         </ul>
                     </div>
-                    
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        var trackList = /*[[${listTrack}]]*/ [];
+                        /*]]>*/
+                    </script>
                 </div>
                 <!-- End Main Content -->
             </div>
         </div>
         <!-- Music Player -->
-        <div th:replace="/user/fragments/playerbar::playerbar"></div>
+        <div th:replace="~{/user/fragments/playerbar::playerbar}"></div>
 
 
 
@@ -83,13 +65,15 @@
     </div>
 
     <!-- Footer -->
-    <div th:replace="/user/fragments/footer::footer"></div>
+    <div th:replace="~{/user/fragments/footer::footer}"></div>
     <!-- End Footer -->
     </div>
 
 
     <div th:replace="~{/user/fragments/foot::foot}"></div>
 
+    <script th:src="@{/js/home.js}"></script>
+    <script th:src="@{/js/search.js}"></script>
 </body>
 
 </html>

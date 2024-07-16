@@ -31,5 +31,11 @@ public class Album {
     @Column(name = "date_release")
     private Date dateRelease;
 
+    @Column(name = "source_cover_photo")
+    private String sourceCoverPhoto;
+
+    @ManyToOne
+    @JoinColumn(name = "id_artist")
+    private Artist artist;
     // Getters and Setters
 }

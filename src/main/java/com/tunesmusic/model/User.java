@@ -25,9 +25,6 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "id_role")
-    private Long idRole;
-
     @Column(name = "name")
     private String name;
 

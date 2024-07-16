@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TrackService extends CommonService<Track>{
     List<Track> findTop5Track();
+    List<Track> findTrackByTrackName(String keyword);
 }

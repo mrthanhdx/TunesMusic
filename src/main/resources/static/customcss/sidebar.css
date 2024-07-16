@@ -93,7 +93,7 @@ html, body {
     position: fixed;
     color: white;
     /* padding: 20px; */
-    border-radius: 15px; 
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     bottom: 0;
     left: 0;
@@ -104,9 +104,13 @@ html, body {
     margin-left: 23%;
 }
 
+.music-player #group1{
+    display: flex;
+}
 .music-player img {
     width: 80px;
     height: 80px;
+    margin-top: 30px;
     object-fit: cover;
     margin-right: 5px;
     border-radius: 10px;
@@ -141,6 +145,9 @@ html, body {
 
 .music-player button:focus {
     outline: none;
+}
+#progress:hover{
+    cursor: pointer;
 }
 
 /* Footer section */
@@ -285,9 +292,10 @@ html, body {
 }
 
 .info {
+    /*display: flex;*/
     margin-bottom: 20px;
-    padding-right: 20px;
-    width: 30%;
+    /*padding-right: 20px;*/
+    width: 80%;
 }
 
 .controls-container {
@@ -343,8 +351,8 @@ html, body {
 } */
 
 .block-content {
-    flex: 1 0 calc(20% - 20px);
-    margin: 10px;
+    flex: 1 0 calc(19% - 20px);
+    margin: 14px;
     background-color: #4f4d4d;
     border-radius: 10px;
     overflow: hidden;
@@ -379,11 +387,12 @@ html, body {
     font-weight: normal;
     color: #ccc1c1;
     cursor: pointer;
+    max-width: 150px;
 
 }
 
 
-#group1 {
+#group2 {
     width: 70%;
     text-align: center;
 }
