@@ -2,7 +2,7 @@ $(document).ready(function () {
     $(".ajax-link").click(function (e) {
         e.preventDefault();
         var url = $(this).attr("href");
-        console.log($(this).attr("href"));
+
 
 
         $.ajax({

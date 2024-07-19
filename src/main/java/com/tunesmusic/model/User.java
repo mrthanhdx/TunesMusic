@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -43,8 +45,12 @@ public class User {
     @Column(name = "account_level")
     private String accountLevel;
 
-    @Column(name = "status")
-    private Integer status;
+    @Column(name = "enable")
+    private Boolean enable;
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    private Set<UserRole> userRoles;
+
 
     // Getters and Setters
 }

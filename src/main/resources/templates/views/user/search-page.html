@@ -39,10 +39,11 @@
                         <ul>
                             <li th:each="track:${listTrack}">
                                 <div class="result row">
-                                    <a class="ajax-link" style="width: 100%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                    <a class="ajax-link" style="width: 85%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
                                         <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
-                                        <label th:text="${track.trackName}"></label>
+                                        <label th:text="${track.trackName}+' - '+${track.artist.artistName}"></label>
                                     </a>
+                                    <i onclick="alert('this feature is developing !')" style="width: 20px" class="fa-solid fa-ellipsis"></i>
                                 </div>
                             </li>
                         </ul>

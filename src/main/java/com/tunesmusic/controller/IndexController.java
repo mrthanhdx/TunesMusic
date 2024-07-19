@@ -55,7 +55,9 @@ public class IndexController {
     }
 
     @GetMapping("/charts")
-    public String openChartsPage(){
+    public String openChartsPage(Model model){
+        List<Track> trackList = trackService.findTop5TrackOrderByDESC();
+        model.addAttribute("listTrack",trackList);
         return "/user/charts-page";
     }
 

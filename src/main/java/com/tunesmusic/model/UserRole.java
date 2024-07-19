@@ -19,11 +19,11 @@ public class UserRole {
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "user",referencedColumnName = "id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "id_role")
+    @JoinColumn(name = "role",referencedColumnName = "id")
     private Role role;
 
 
