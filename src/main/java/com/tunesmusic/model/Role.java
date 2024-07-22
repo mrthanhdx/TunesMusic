@@ -24,8 +24,12 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles;
+//        @OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
+//    private Set<UserRole> userRoles;
+
+
+//    @OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
+//    private Set<UserRole> userRoles;
 
     // Getters and Setters
 }

@@ -48,9 +48,12 @@ public class User {
     @Column(name = "enable")
     private Boolean enable;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Role> userRoles;
+//    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+//    private Set<UserRole> userRoles;
 
 
     // Getters and Setters
+
 }
