@@ -30,11 +30,11 @@ public class SpringSecurityConfig {
                 .requestMatchers("/*").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/artist/**").hasRole("ARTIST")
-                .requestMatchers("/tunesmusic/**").authenticated()
+                .requestMatchers("/tunesmusic/**").permitAll()
                 .anyRequest().authenticated()
         ).formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
-                .defaultSuccessUrl("/tunesmusic", true)
+                .successHandler(new CustomAuthenticationSuccessHandler())
                 .permitAll());
         return http.build();
     }

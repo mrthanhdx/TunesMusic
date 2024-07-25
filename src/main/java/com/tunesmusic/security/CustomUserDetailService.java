@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -35,7 +36,7 @@ public class CustomUserDetailService implements UserDetailsService {
 //             ) {
 //            grantedAuthoritySet.add(new SimpleGrantedAuthority(userRole.getRole().getRoleName()));
 //        }
-        Set<Role> roles = user.getUserRoles();
+        List<Role> roles = user.getRoles();
         for (Role role : roles
         ) {
             grantedAuthoritySet.add(new SimpleGrantedAuthority(role.getRoleName()));
