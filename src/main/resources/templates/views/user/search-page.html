@@ -37,17 +37,23 @@
 
                     <div class="list-result-search">
                         <ul>
-                            <li th:each="track:${listTrack}">
-                                <div class="result row">
-                                    <a class="ajax-link" style="width: 85%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                            <li th:each="track : ${listTrack}">
+                                <div class="result row" style="display: flex">
+                                    <a class="ajax-link" style="width: 82%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
                                         <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
-                                        <label th:text="${track.trackName}+' - '+${track.artist.artistName}"></label>
+                                        <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName}"></label>
                                     </a>
-                                    <i onclick="alert('this feature is developing !')" style="width: 20px" class="fa-solid fa-ellipsis"></i>
+                                    <div class="dropdown" style="width: 12%">
+                                        <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
+                                        <div class="dropdown-content">
+                                            <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
+
                     <script th:inline="javascript">
                         /*<![CDATA[*/
                         var trackList = /*[[${listTrack}]]*/ [];

@@ -27,15 +27,22 @@ public class SpringSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests((auth) -> auth
 
-                .requestMatchers("/*").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/artist/**").hasRole("ARTIST")
-                .requestMatchers("/tunesmusic/**").permitAll()
-                .anyRequest().authenticated()
-        ).formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")
-                .usernameParameter("username").passwordParameter("password")
-                .successHandler(new CustomAuthenticationSuccessHandler())
-                .permitAll());
+                        .requestMatchers("/*").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/artist/**").hasRole("ARTIST")
+                        .requestMatchers("/tunesmusic/add-to-favorite").authenticated()
+                        .requestMatchers("/tunesmusic/favorite-song").authenticated()
+                        .requestMatchers("/tunesmusic/playlist").authenticated()
+                        .requestMatchers("/tunesmusic/artist-following").authenticated()
+                        .requestMatchers("/tunesmusic/**").permitAll()
+                        .anyRequest().authenticated()
+                ).formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")
+                        .usernameParameter("username").passwordParameter("password")
+                        .successHandler(new CustomAuthenticationSuccessHandler())
+                        .permitAll())
+                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/tunesmusic"));
+
+
         return http.build();
     }
 

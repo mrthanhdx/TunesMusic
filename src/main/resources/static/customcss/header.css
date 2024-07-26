@@ -1,0 +1,54 @@
+
+
+/* Header styles */
+.bg-dark.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #343a40;
+    color: white;
+}
+
+.bg-dark.row.header div .btn {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    padding: 5px 10px;
+}
+
+.fa-bell {
+    width: 50px;
+    font-size: 28px;
+    margin-left: 8px;
+}
+.fa-bell:hover{
+    cursor: pointer;
+}
+
+#mini-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Adding some spacing between elements */
+.header-element {
+    margin-right: 5px;
+}
+.user-info{
+    margin-left: 720px;
+}
+.login-btn {
+    position: absolute;
+    background-color: #bb9216;
+    right: 320px; /* Space from the right edge */
+    color: wheat;
+    font-size: 24px;
+    /*background-color: transparent;*/
+    border: none;
+    cursor: pointer;
+}

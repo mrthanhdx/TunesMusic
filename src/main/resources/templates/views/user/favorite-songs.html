@@ -37,38 +37,20 @@
 
                     <div class="list-favorite-songs">
                         <ul>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album1.jpg" alt="#">
-                                    <label>All Too Well-Taylor version</label>
+                            <li th:each="track : ${listFavoriteTrack}">
+                                <div class="result row" style="display: flex">
+                                    <a class="ajax-link" style="width: 82%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                        <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
+                                        <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName}"></label>
+                                    </a>
+                                    <div class="dropdown" style="width: 12%">
+                                        <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
+                                        <div class="dropdown-content">
+                                            <a th:href="@{/tunesmusic/remove-from-favorite(trackId=${track.id})}">Remove from favorite</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album2.jpg" alt="#">
-                                    <label>Taylor Swift</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <img src="/image/album3.jpg" alt="#">
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            
-
                         </ul>
                        <div> <a href="/User/favorite-songs/show-all"><button style="margin-top: 12px;">show all</button></a></div>
                     </div>

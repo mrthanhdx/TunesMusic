@@ -31,4 +31,6 @@ public class SearchController {
         model.addAttribute("listTrack",trackList);
                 return "/user/search-page";
     }
+
+
 }

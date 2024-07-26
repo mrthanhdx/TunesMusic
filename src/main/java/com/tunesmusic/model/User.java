@@ -61,4 +61,10 @@ public class User {
 
     // Getters and Setters
 
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_favorite",
+            joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id",referencedColumnName = "id")})
+    private List<Track> listTrackFavorite = new ArrayList<>();
 }

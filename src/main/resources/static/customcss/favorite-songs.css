@@ -51,10 +51,8 @@
   }
   
   .list-favorite-songs .result:hover {
-    background-color: #444;
-    transform: scale(1.05);
-    transition: transform 0.4s ease;
-    cursor: pointer;
+      background-color: #444;
+      cursor: pointer;
   }
   
   .list-favorite-songs img {

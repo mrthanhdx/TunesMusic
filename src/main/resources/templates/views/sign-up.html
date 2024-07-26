@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5;">
+
+<div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 300px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Sign Up</h2>
+    <form th:action="@{/sign-up}" method="post" style="display: flex; flex-direction: column;">
+        <label for="username" style="margin-bottom: 5px;">Username:</label>
+        <input type="text" id="username" name="username" required style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="password" style="margin-bottom: 5px;">Password:</label>
+        <input type="password" id="password" name="password" required style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="name" style="margin-bottom: 5px;">Name:</label>
+        <input type="text" id="name" name="name" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="dateOfBirth" style="margin-bottom: 5px;">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="email" style="margin-bottom: 5px;">Email:</label>
+        <input type="email" id="email" name="email" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="location" style="margin-bottom: 5px;">Location:</label>
+        <input type="text" id="location" name="location" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+<!--        <label for="profilePicture" style="margin-bottom: 5px;">Profile Picture URL:</label>-->
+<!--        <input type="file" id="profilePicture" name="profilePicture" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">-->
+
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer;">
+            Sign Up
+        </button>
+    </form>
+    <br>
+    <a href="/login" style="text-decoration: none;color: #4CAF50">Already have an account? Log in</a>
+</div>
+
+</body>
+</html>
