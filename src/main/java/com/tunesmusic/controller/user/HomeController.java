@@ -32,32 +32,34 @@ public class HomeController {
 
     @Autowired
     ArtistService artistService;
+
     @GetMapping("/playsong")
     @ResponseBody
     public Track playSong(Model model, @RequestParam("id") Long id) {
         Track track = trackService.findById(id);
         return track;
     }
+
     @GetMapping("/add-to-favorite")
-    public String addTrackToFavorite(@RequestParam("trackId") Long trackId, Authentication authentication,Model model){
-        if (authentication!=null){
-            CustomUserDetail customUserDetail =(CustomUserDetail) authentication.getPrincipal();
-            User user  = customUserDetail.getUser();
+    public String addTrackToFavorite(@RequestParam("trackId") Long trackId, Authentication authentication, Model model) {
+        if (authentication != null) {
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
             User user1 = userService.findById(user.getId());
             List<Track> listFavoriteTrack = user1.getListTrackFavorite();
             boolean isExist = false;
-            if (listFavoriteTrack.isEmpty()){
-                userService.insertFavoriteSong(user.getId(),trackId);
+            if (listFavoriteTrack.isEmpty()) {
+                userService.insertFavoriteSong(user.getId(), trackId);
             } else {
-                for (Track track: listFavoriteTrack
+                for (Track track : listFavoriteTrack
                 ) {
-                    if (track.getId()==trackId){
-                       isExist = true;
+                    if (track.getId() == trackId) {
+                        isExist = true;
                         break;
                     }
                 }
-                if (!isExist){
-                    userService.insertFavoriteSong(user.getId(),trackId);
+                if (!isExist) {
+                    userService.insertFavoriteSong(user.getId(), trackId);
                 }
             }
         }
