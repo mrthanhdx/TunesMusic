@@ -67,4 +67,7 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "track_id",referencedColumnName = "id")})
     private List<Track> listTrackFavorite = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Playlist> listPlaylist = new ArrayList<>();
 }

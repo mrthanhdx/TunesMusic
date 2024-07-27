@@ -41,7 +41,7 @@
 
 .list-songs-charts .result:hover {
     background-color: #a09696;
-    transform: scale(1.05);
+    transform: scale(1.01);
     cursor: pointer;
 }
 

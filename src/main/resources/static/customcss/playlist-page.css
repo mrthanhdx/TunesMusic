@@ -73,4 +73,41 @@
   .list-songs button:active {
     transform: translateY(0);
   }
-  
+
+/* Style for the New Playlist button */
+.new-playlist-btn {
+  position: absolute;
+  left: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 160px;
+  background-color: limegreen;
+  border-radius: 12px; /* Rounded corners for a softer look */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.new-playlist-btn:hover {
+  background-color: green; /* Darker shade for hover effect */
+}
+
+.new-playlist-btn i {
+  margin-right: 10px; /* Spacing between icon and text */
+  font-size: 18px; /* Size of the icon */
+  color: #ffffff; /* Color of the icon */
+}
+
+.new-playlist-btn label {
+  font-size: 18px; /* Size of the text */
+  color: #ffffff; /* Color of the text */
+  cursor: pointer; /* Change cursor on hover to indicate it's clickable */
+}
+
+/* Ensure the button is centered within its container */
+.centered-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

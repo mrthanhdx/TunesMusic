@@ -32,7 +32,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/artist/**").hasRole("ARTIST")
                         .requestMatchers("/tunesmusic/add-to-favorite").authenticated()
                         .requestMatchers("/tunesmusic/favorite-song").authenticated()
-                        .requestMatchers("/tunesmusic/playlist").authenticated()
+//                        .requestMatchers("/tunesmusic/playlist").authenticated()
                         .requestMatchers("/tunesmusic/artist-following").authenticated()
                         .requestMatchers("/tunesmusic/**").permitAll()
                         .anyRequest().authenticated()

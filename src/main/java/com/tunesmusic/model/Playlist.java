@@ -2,7 +2,9 @@ package com.tunesmusic.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "playlist")
@@ -22,6 +24,12 @@ public class Playlist {
     @Column(name = "day_created")
     private Date dayCreated;
 
+    @ManyToMany
+    @JoinTable(
+            name = "playlist_track",
+            joinColumns = {@JoinColumn(name = "playlist_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id", referencedColumnName = "id")})
+    private List<Track> listTrack = new ArrayList<>();
     // Getters and Setters
 }
 

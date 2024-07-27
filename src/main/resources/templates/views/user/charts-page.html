@@ -30,17 +30,25 @@
 
                     </div>
                 </div>
+
+<!--                <div th:class="'result row position-' + ${iterStat.index + 1}">-->
+
                 <!-- Replace with your main content elements -->
                 <div class="list-songs-charts">
                     <ul>
                         <li th:each="track, iterStat : ${listTrack}">
-                            <a class="ajax-link" style="width: 100%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/charts/playsong(trackid=${track.id})}">
-                                <div th:class="'result row position-' + ${iterStat.index + 1}">
-                                    <span th:text="${iterStat.index + 1}" class="position"></span>
+                            <div th:class="'result row position-' + ${iterStat.index + 1}" style="display: flex">
+                                <a class="ajax-link" style="width: 79%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
                                     <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
-                                    <label th:text="${track.trackName}"></label>
+                                    <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName}"></label>
+                                </a>
+                                <div class="dropdown" style="width: 12%">
+                                    <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
+                                    <div class="dropdown-content">
+                                        <a style="margin-right: 5px" th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                    </div>
                                 </div>
-                            </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
