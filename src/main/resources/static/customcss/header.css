@@ -40,12 +40,12 @@
     margin-right: 5px;
 }
 .user-info{
-    margin-left: 720px;
+    margin-left: 980px;
 }
 .login-btn {
     position: absolute;
     background-color: #bb9216;
-    right: 320px; /* Space from the right edge */
+    right: 80px; /* Space from the right edge */
     color: wheat;
     font-size: 24px;
     /*background-color: transparent;*/

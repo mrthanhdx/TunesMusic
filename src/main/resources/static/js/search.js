@@ -39,11 +39,26 @@ $(document).ready(function () {
     }
 })
 
+// JavaScript code to toggle dropdown and playlist list
 function toggleDropdown(element) {
     var dropdownContent = element.nextElementSibling;
     dropdownContent.classList.toggle("show");
 }
 
+// Show playlist list on hover
+document.querySelectorAll('.playlist-dropdown').forEach(function(playlistDropdown) {
+    playlistDropdown.addEventListener('mouseover', function() {
+        // alert("mouse over")
+        var playlistList = playlistDropdown.querySelector('.playlist-list');
+        playlistList.classList.add('show');
+    });
+    playlistDropdown.addEventListener('mouseout', function() {
+        var playlistList = playlistDropdown.querySelector('.playlist-list');
+        playlistList.classList.remove('show');
+    });
+});
+
+// Close dropdown and playlist list when clicked outside
 window.onclick = function(event) {
     if (!event.target.matches('.fa-ellipsis')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -51,6 +66,13 @@ window.onclick = function(event) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
+            }
+        }
+        var playlistLists = document.getElementsByClassName("playlist-list");
+        for (var i = 0; i < playlistLists.length; i++) {
+            var openPlaylistList = playlistLists[i];
+            if (openPlaylistList.classList.contains('show')) {
+                openPlaylistList.classList.remove('show');
             }
         }
     }

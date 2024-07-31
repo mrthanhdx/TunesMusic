@@ -1,11 +1,18 @@
 package com.tunesmusic.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "playlist")
 public class Playlist {
@@ -17,6 +24,9 @@ public class Playlist {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
+
+    @Column(name = "playlist_name")
+    private String playlistName;
 
     @Column(name = "cover_picture")
     private String coverPicture;

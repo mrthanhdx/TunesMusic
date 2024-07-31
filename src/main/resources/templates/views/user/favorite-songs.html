@@ -11,8 +11,10 @@
 
 
             <div class="col-md-9 content bg-dark">
+                <div th:replace="~{/user/fragments/header::header}"></div>
                 <!-- Main Content -->
                 <div class="main-content">
+
                     <!-- Replace with your main content elements -->
                     <div class="favorite-page-header">
                         <h3 class="title page">Your Favorite-Songs</h3>
@@ -52,7 +54,7 @@
                                 </div>
                             </li>
                         </ul>
-                       <div> <a href="/User/favorite-songs/show-all"><button style="margin-top: 12px;">show all</button></a></div>
+                       <div> <a id="show-all-favorite-song" th:href="@{/tunesmusic/favorite-song/show-all}"><button style="margin-top: 12px;">show all</button></a></div>
                     </div>
                     
                 </div>

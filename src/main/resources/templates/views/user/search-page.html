@@ -12,6 +12,7 @@
 
 
             <div class="col-md-9 content bg-dark">
+                <div th:replace="~{/user/fragments/header::header}"></div>
                 <!-- Main Content -->
                 <div class="main-content">
                     <!-- Replace with your main content elements -->
@@ -47,6 +48,19 @@
                                         <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
                                         <div class="dropdown-content">
                                             <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                            <div class="playlist-dropdown">
+                                                <a href="#">Add to Playlist</a>
+                                                <div class="playlist-list">
+                                                    <!-- List of playlists will be displayed here -->
+                                                    <ul>
+                                                        <li th:each="playlist : ${playlists}">
+                                                            <a th:id="'add-song-' + ${track.id} + '-to-playlist-'+${playlist.id}"
+                                                               th:onclick="'handleAddSongToPlaylist(${track.id},${playlist.id})'"
+                                                               th:href="@{/tunesmusic/add-to-playlist(playlistId=${playlist.id}, trackId=${track.id})}">[[${playlist.playlistName}]]</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -30,4 +30,9 @@ public class PlaylistServiceImpl implements PlaylistService {
     public List<Playlist> findAll() {
         return playlistRepository.findAll();
     }
+
+    @Override
+    public List<Playlist> findPlaylistByIdUser(Long idUser) {
+        return playlistRepository.findPlaylistsByIdUser(idUser);
+    }
 }

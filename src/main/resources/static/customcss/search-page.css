@@ -183,3 +183,39 @@
     display: block;
 }
 
+/* CSS to style the playlist dropdown and list */
+.playlist-dropdown {
+    position: relative;
+}
+
+.playlist-list {
+
+    display: none;
+    background-color: #c4c1ba;
+    padding: 10px;
+    border: 3px solid #ccc;
+}
+
+.playlist-list.show {
+    display: block;
+}
+
+.playlist-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playlist-list li {
+    margin-bottom: 10px;
+}
+
+.playlist-list a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.playlist-list a:hover {
+    color: #23527c;
+}
+

@@ -17,7 +17,7 @@ var currentIndex;
 }
 //ajax handle
 $(document).ready(function () {
-    $(".ajax-link").click(function (e) {
+    $(".list-favorite-songs").on("click", ".ajax-link", function (e) {
         e.preventDefault();
         var url = $(this).attr("href");
         $.ajax({
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
                 // Reload the audio element
                 if (!audioElement.paused){
-                   stopAudio();
+                    stopAudio();
                 }
                 refreshAudio();
                 audioElement.load();

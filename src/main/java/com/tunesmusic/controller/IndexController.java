@@ -1,10 +1,12 @@
 package com.tunesmusic.controller;
 
+import com.tunesmusic.model.Playlist;
 import com.tunesmusic.model.Track;
 import com.tunesmusic.model.User;
 import com.tunesmusic.security.CustomUserDetail;
 import com.tunesmusic.service.AlbumService;
 import com.tunesmusic.service.ArtistService;
+import com.tunesmusic.service.PlaylistService;
 import com.tunesmusic.service.TrackService;
 import com.tunesmusic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class IndexController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    PlaylistService playlistService;
+
     @GetMapping("")
     public String index(Model model, Authentication authentication){
        if (authentication!=null) {
@@ -57,19 +62,37 @@ public class IndexController {
         return "redirect:/tunesmusic";
     }
     @GetMapping("/search")
-    public String openSearchPage(Model model){
+    public String openSearchPage(Model model,Authentication authentication){
+        if (authentication!=null) {
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
+            model.addAttribute("user",user);
+            List<Playlist> listPlaylist = playlistService.findPlaylistByIdUser(user.getId());
+            model.addAttribute("playlists",listPlaylist);
+        }
+
         List<Track> trackList = trackService.findTop5Track();
         model.addAttribute("listTrack",trackList);
         return "/user/search-page";
     }
 
     @GetMapping("/artist-following")
-    public String openSearchArtistFollowingPage(){
+    public String openSearchArtistFollowingPage(Model model,Authentication authentication){
+        if (authentication!=null) {
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
+            model.addAttribute("user",user);
+        }
         return "/user/artist-following";
     }
 
     @GetMapping("/charts")
-    public String openChartsPage(Model model){
+    public String openChartsPage(Model model,Authentication authentication){
+        if (authentication!=null) {
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
+            model.addAttribute("user",user);
+        }
         List<Track> trackList = trackService.findTop5TrackOrderByDESC();
         model.addAttribute("listTrack",trackList);
         return "/user/charts-page";
@@ -79,6 +102,7 @@ public class IndexController {
     public String openFavoritesongPage(Authentication authentication,Model model){
         CustomUserDetail customUserDetail =(CustomUserDetail) authentication.getPrincipal();
         User user = customUserDetail.getUser();
+        model.addAttribute("user",user);
         User user1 = userService.findById(user.getId());
         List<Track> listFavoriteTrack = user1.getListTrackFavorite();
         List<Track> listFavoriteTrackTop5 = new ArrayList<>();
@@ -109,7 +133,15 @@ public class IndexController {
     }
 
     @GetMapping("/playlist")
-    public String openPlaylistPage(){
+    public String openPlaylistPage(Authentication authentication,Model model){
+        if (authentication!=null) {
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
+            model.addAttribute("user",user);
+            List<Playlist> listPlaylist = playlistService.findPlaylistByIdUser(user.getId());
+            model.addAttribute("listPlaylist",listPlaylist);
+        }
+
         return "/user/playlist-page";
     }
 }
