@@ -44,7 +44,7 @@ public class PlaylistController {
     }
     @GetMapping("/add-to-playlist")
     @ResponseBody
-    public String addSongToPlaylist (Model model,@RequestParam("playlistId") Long playlistId,@RequestParam("trackId") Long trackId){
+    public String addSongToPlaylist (@RequestParam("playlistId") Long playlistId,@RequestParam("trackId") Long trackId){
         Playlist playlist = playlistService.findById(playlistId);
 
         List<Track> listTrackPlaylist = playlist.getListTrack();
@@ -59,6 +59,14 @@ public class PlaylistController {
                   return "success";
 
     }
+    @GetMapping("/remove-from-playlist")
+    @ResponseBody
+    public List<Track> removeSongFromPlaylist(@RequestParam("playlistId") Long playlistId, @RequestParam("trackId") Long trackId) {
+        playlistService.deleteTrackFromPlaylist(playlistId, trackId);
+        Playlist updatedPlaylist = playlistService.findById(playlistId);
+        return updatedPlaylist.getListTrack();
+    }
+
     @PostMapping("/new-playlist")
     public String createNewPlaylist(Authentication authentication){
 

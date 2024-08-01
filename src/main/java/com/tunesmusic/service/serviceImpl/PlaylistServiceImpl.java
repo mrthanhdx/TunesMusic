@@ -40,4 +40,9 @@ public class PlaylistServiceImpl implements PlaylistService {
     public void addSongToPlaylist(Long playlistId, Long trackId) {
         playlistRepository.addSongToPlaylist(playlistId,trackId);
     }
+
+    @Override
+    public void deleteTrackFromPlaylist(Long playlistId, Long trackId) {
+        playlistRepository.deleteTrackFromPlaylist(playlistId,trackId);
+    }
 }

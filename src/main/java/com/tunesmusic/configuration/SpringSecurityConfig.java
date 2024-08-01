@@ -35,6 +35,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/tunesmusic/playlist").authenticated()
                         .requestMatchers("/tunesmusic/playlist/**").authenticated()
                         .requestMatchers("/tunesmusic/artist-following").authenticated()
+                        .requestMatchers("/tunesmusic/remove-from-playlist/**").authenticated()
                         .requestMatchers("/tunesmusic/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")

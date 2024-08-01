@@ -9,12 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface PlaylistRepository extends JpaRepository<Playlist,Long> {
-    @Query(value = "select * from playlist where id_user = ?1",nativeQuery = true)
+public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
+    @Query(value = "select * from playlist where id_user = ?1", nativeQuery = true)
     List<Playlist> findPlaylistsByIdUser(Long idUser);
 
     @Modifying
     @Transactional
-    @Query(value = "insert into playlist_track(playlist_id,track_id) values (?1,?2)",nativeQuery = true)
-    void addSongToPlaylist(Long playlistId,Long trackId);
+    @Query(value = "insert into playlist_track(playlist_id,track_id) values (?1,?2)", nativeQuery = true)
+    void addSongToPlaylist(Long playlistId, Long trackId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from playlist_track where playlist_id=?1 and track_id=?2", nativeQuery = true)
+    void deleteTrackFromPlaylist(Long playlistId, Long trackId);
 }

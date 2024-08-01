@@ -8,4 +8,6 @@ public interface PlaylistService extends CommonService<Playlist> {
     List<Playlist> findPlaylistByIdUser(Long idUser);
 
     void addSongToPlaylist(Long playlistId,Long trackId);
+
+    void deleteTrackFromPlaylist(Long playlistId,Long trackId);
 }
