@@ -176,3 +176,8 @@ function handleSearch(event) {
     window.location.href = url;
 }
 
+window.onkeydown = function(e) {
+    if (e.keyCode == 32) { // space bar
+        btnplay2.click(); // call the click method
+    }
+};

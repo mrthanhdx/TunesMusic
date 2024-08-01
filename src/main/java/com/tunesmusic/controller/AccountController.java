@@ -53,7 +53,9 @@ public class AccountController {
         user.setPassword(password);
         user.setAccountLevel("Normal");
         user.setEnable(true);
+        user.setProfilePicture("/img/userProfileImage/anonymous.jpg");
         userService.save(user);
+
         User user1 = userService.findUserByUsername(user.getUsername());
         userService.insertDefaultUserRole(user1.getId());
 

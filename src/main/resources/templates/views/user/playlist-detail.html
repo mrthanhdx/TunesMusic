@@ -40,7 +40,7 @@
                                 <div class="dropdown" style="width: 12%">
                                     <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
                                     <div class="dropdown-content">
-                                        <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Remove from playlist</a>
+                                        <a th:href="@{/tunesmusic/remove-from-playlist(playlistId = ${playlist.id},trackId=${track.id})}">Remove from playlist</a>
                                     </div>
                                 </div>
                             </div>

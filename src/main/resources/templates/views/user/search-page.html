@@ -54,9 +54,10 @@
                                                     <!-- List of playlists will be displayed here -->
                                                     <ul>
                                                         <li th:each="playlist : ${playlists}">
-                                                            <a th:id="'add-song-' + ${track.id} + '-to-playlist-'+${playlist.id}"
-                                                               th:onclick="'handleAddSongToPlaylist(${track.id},${playlist.id})'"
-                                                               th:href="@{/tunesmusic/add-to-playlist(playlistId=${playlist.id}, trackId=${track.id})}">[[${playlist.playlistName}]]</a>
+                                                            <a class="btn-add-song-to-playlist"
+                                                               th:href="@{/tunesmusic/add-to-playlist(playlistId=${playlist.id}, trackId=${track.id})}">
+                                                                [[${playlist.playlistName}]]
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -68,6 +69,19 @@
                         </ul>
                     </div>
 
+                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img id="toastIcon" style="width: 20px;height: 20px" src="/img/icon/error.jpg" class="rounded me-2" alt="error">
+                                <strong id="toastTitle" class="me-auto">Error</strong>
+                                <small id="currentTime">11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                Hello, world! This is a toast message.
+                            </div>
+                        </div>
+                    </div>
                     <script th:inline="javascript">
                         /*<![CDATA[*/
                         var trackList = /*[[${listTrack}]]*/ [];
@@ -93,7 +107,6 @@
 
     <div th:replace="~{/user/fragments/foot::foot}"></div>
 
-    <script th:src="@{/js/home.js}"></script>
     <script th:src="@{/js/search.js}"></script>
 </body>
 

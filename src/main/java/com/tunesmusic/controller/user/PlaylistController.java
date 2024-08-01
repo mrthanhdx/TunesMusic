@@ -42,8 +42,23 @@ public class PlaylistController {
         model.addAttribute("listTrack",trackList);
         return "/user/playlist-detail";
     }
-//    @GetMapping("/add-to-playlist")
-//    public String
+    @GetMapping("/add-to-playlist")
+    @ResponseBody
+    public String addSongToPlaylist (Model model,@RequestParam("playlistId") Long playlistId,@RequestParam("trackId") Long trackId){
+        Playlist playlist = playlistService.findById(playlistId);
+
+        List<Track> listTrackPlaylist = playlist.getListTrack();
+        for (Track track: listTrackPlaylist
+             ) {
+            if (track.getId()==trackId){
+               return "failed";
+            }
+        }
+
+            playlistService.addSongToPlaylist(playlistId,trackId);
+                  return "success";
+
+    }
     @PostMapping("/new-playlist")
     public String createNewPlaylist(Authentication authentication){
 

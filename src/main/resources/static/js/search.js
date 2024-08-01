@@ -1,42 +1,54 @@
 $(document).ready(function () {
+
+
+
     $(".ajax-link").click(function (e) {
         e.preventDefault();
         var url = $(this).attr("href");
-
-
-
         $.ajax({
             url: url,
             method: 'GET',
             success: function (response) {
-                // console.log(response)
                 updatePlayerBar(response);
-
+                trackPlay = response;
             }
         })
-    })
-    var updatePlayerBar = function (track) {
-        if (track) {
-            // Update the cover image
-            $('#group1 img').attr('src', track.sourceCoverImage);
 
-            // Update the track name
-            $('#group1 h1').text(track.trackName);
+        function updatePlayerBar(track) {
+            if (track) {
+                stopAudio();
+                $("#group1 img").attr('src', track.sourceCoverImage);
 
-            // Update the artist name
-            $('#group1 h2').text(track.artist.artistName);
+                // Update the track name
+                $('#group1 h1').text(track.trackName);
 
-            // Update the audio source
-            $('#audio').attr('src', track.sourceAudio);
+                // Update the artist name
+                $('#group1 h2').text(track.artist.artistName);
 
-            // Reload the audio element
-            var audio = document.getElementById('audio');
-            audio.load();
-            audio.play();
-        } else {
-            console.error('No track data to update the player bar');
+                // Update the audio source
+                $('#audio').attr('src', track.sourceAudio);
+
+                // Reload the audio element
+                if (!audioElement.paused){
+                    stopAudio();
+                }
+                refreshAudio();
+                audioElement.load();
+                audioElement.play();
+                isPlaying=true;
+                updateProgress();
+                audioElement.onplay = () => {
+                    controlPlayer.classList.add("playing");
+                }
+
+                audioElement.onpause = () => {
+                    controlPlayer.classList.remove("playing");
+                }
+            } else {
+                console.error('No track data to update the player bar');
+            }
         }
-    }
+    })
 })
 
 // JavaScript code to toggle dropdown and playlist list
@@ -78,3 +90,63 @@ window.onclick = function(event) {
     }
 }
 
+var addSongToPlaylistBtns = $$1(".btn-add-song-to-playlist");
+
+const toastIcon = document.getElementById("toastIcon");
+const toastBody = document.querySelector(".toast-body");
+const currentTime = document.getElementById("currentTime");
+const toastTitle = document.getElementById("toastTitle");
+const date = new Date();
+const offset = 7 * 60 * 60 * 1000; // GMT+7 offset in milliseconds
+const gmt7Date = new Date(date.getTime() + offset);
+
+const hours = gmt7Date.getHours().toString().padStart(2, '0');
+const minutes = gmt7Date.getMinutes().toString().padStart(2, '0');
+const day = gmt7Date.getDate().toString().padStart(2, '0');
+const month = (gmt7Date.getMonth() + 1).toString().padStart(2, '0');
+const year = gmt7Date.getFullYear();
+addSongToPlaylistBtns.forEach((element) => {
+    if (!element.hasAttribute("data-event-listener-attached")) {
+        element.addEventListener("click", (event) => {
+            event.preventDefault();
+           var url = element.getAttribute("href");
+
+
+            console.log(url);
+
+           $.ajax({
+               url:url,
+               method: "GET",
+               success:function (response){
+                   handleAddToPlaylist(response);
+               }
+           })
+        });
+        element.setAttribute("data-event-listener-attached", "true");
+    }
+});
+function handleAddToPlaylist(response){
+    if (response=="success"){
+        toastIcon.setAttribute("src", "/img/icon/success.jpg");
+        toastBody.innerText = "Add song to playlist successfully !";
+        currentTime.innerText = `${hours}:${minutes} ${day}-${month}-${year}`;
+        toastTitle.innerText = "Success";
+        var toastMessage = document.getElementById("liveToast");
+        var toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastMessage);
+        toastBootstrap.show();
+        setTimeout(()=>{
+            toastBootstrap.hide();
+        },3000);
+    } else {
+        toastIcon.setAttribute("src", "/img/icon/error.jpg");
+        toastBody.innerText = "this song already exist in this playlist !";
+        currentTime.innerText = `${hours}:${minutes} ${day}-${month}-${year}`;
+        toastTitle.innerText = "Failed";
+        var toastMessage = document.getElementById("liveToast");
+        var toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastMessage);
+        toastBootstrap.show();
+        setTimeout(()=>{
+            toastBootstrap.hide();
+        },3000);
+    }
+}

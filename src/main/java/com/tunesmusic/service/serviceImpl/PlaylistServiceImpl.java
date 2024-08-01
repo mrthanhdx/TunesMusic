@@ -35,4 +35,9 @@ public class PlaylistServiceImpl implements PlaylistService {
     public List<Playlist> findPlaylistByIdUser(Long idUser) {
         return playlistRepository.findPlaylistsByIdUser(idUser);
     }
+
+    @Override
+    public void addSongToPlaylist(Long playlistId, Long trackId) {
+        playlistRepository.addSongToPlaylist(playlistId,trackId);
+    }
 }
