@@ -17,6 +17,11 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
+    public List<Artist> getListArtistByUserId(Long userId) {
+        return artistRepository.getArtistByUserId(userId);
+    }
+
+    @Override
     public void save(Artist artist) {
         artistRepository.save(artist);
     }

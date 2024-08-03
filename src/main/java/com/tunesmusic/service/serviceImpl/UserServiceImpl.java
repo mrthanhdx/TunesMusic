@@ -30,6 +30,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void unfollowArtist(Long userId, Long artistId) {
+        userRepository.unfollowArtist(userId,artistId);
+    }
+
+    @Override
+    public void followArtist(Long userId, Long artistId) {
+        userRepository.followArtist(userId,artistId);
+    }
+
+    @Override
     public void save(User user) {
         userRepository.save(user);
     }

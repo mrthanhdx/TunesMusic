@@ -1,19 +1,32 @@
 const removeSongFromPlaylistBtns = $$1(".remove-song-from-playlist");
-const idPlaylist  = $("#identifyPlaylistId").value;
-removeSongFromPlaylistBtns.forEach((element) =>{
-    element.addEventListener("click",(event)=>{
-        event.preventDefault();
-        var url = element.getAttribute("href");
-        $.ajax({
-            url:url,
-            method:"GET",
-            success:function (response){
-                console.log(response);
-                updatePlaylistUI(response);
-            }
-        })
+const idPlaylist  = $("#identifyPlaylistId").val();
+
+$(".list-result-search").on("click",".remove-song-from-playlist",function (event){
+    event.preventDefault();
+    var url = this.getAttribute("href");
+    $.ajax({
+        url:url,
+        method:"GET",
+        success:function (response){
+            updatePlaylistUI(response);
+        }
     })
 })
+
+// removeSongFromPlaylistBtns.forEach((element) =>{
+//     element.addEventListener("click",(event)=>{
+//         event.preventDefault();
+//         var url = element.getAttribute("href");
+//         $.ajax({
+//             url:url,
+//             method:"GET",
+//             success:function (response){
+//                 console.log(response);
+//                 updatePlaylistUI(response);
+//             }
+//         })
+//     })
+// })
 
 function updatePlaylistUI(response){
     if (response){

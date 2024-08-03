@@ -1,5 +1,6 @@
 package com.tunesmusic.controller;
 
+import com.tunesmusic.model.Artist;
 import com.tunesmusic.model.Playlist;
 import com.tunesmusic.model.Track;
 import com.tunesmusic.model.User;
@@ -82,6 +83,9 @@ public class IndexController {
             CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
             User user = customUserDetail.getUser();
             model.addAttribute("user",user);
+            User user1 = userService.findById(user.getId());
+            List<Artist> listArtistFollowing =user1.getListArtistFollowing();
+            model.addAttribute("listArtistFollowing",listArtistFollowing);
         }
         return "/user/artist-following";
     }

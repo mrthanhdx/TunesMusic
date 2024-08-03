@@ -37,88 +37,31 @@
 
                     <div class="list-artist-following">
                         <ul>
-                            <li>
+                            <li th:each="artist:${listArtistFollowing}">
                                 <div class="result row">
-                                    <a href="#"> <img src="/image/album1.jpg" alt="#">
-                                        <label>All Too Well-Taylor version</label>
-                                        <button class="follow active">
-                                            Follow
-                                            <i class="fa-solid fa-plus"></i>
+                                    <a style="width: 68%" th:href="@{/tunesmusic/artist-profile(artistId = ${artist.id})}">
+                                        <img th:src="@{${artist.user.profilePicture}}" th:alt="${artist.artistName}">
+                                        <label th:text="${artist.artistName}"></label>
+                                    </a>
+                                    <form th:id="|request-follow-form-${artist.id}|" style="width: 20%" th:action="@{/tunesmusic/artist-following/request-follow}"
+                                    th:onsubmit="|requestFollowSubmit(event,${artist.id})|"
+                                          method="post"
+                                    >
+                                       <div>
+<!--                                           <input  type="hidden" name="idArtist" th:id="|idArtist-${artist.id}|" th:value="${artist.id}">-->
+                                           <button th:id="|btnFollow-${artist.id}|" type="submit" class="follow ">
+                                               Follow
+                                               <i class="fa-solid fa-plus"></i>
                                            </button>
 
-                                        <button class="following ">Following
-                                            <i class="fa-solid fa-check"></i>
-                                            </button>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <a href="#"> <img src="/image/album2.jpg" alt="#">
-                                        <label>Taylor Swift</label>
-                                        <button class="follow ">
-                                            Follow
-                                            <i class="fa-solid fa-plus"></i>
+                                           <button th:id="|btnFollowing-${artist.id}|" type="submit" class="following active">Following
+                                               <i class="fa-solid fa-check"></i>
                                            </button>
 
-                                        <button class="following active">Following
-                                            <i class="fa-solid fa-check"></i>
-                                            </button>
-                                    </a>
-
-
+                                       </div>
+                                    </form>
                                 </div>
                             </li>
-                            <li>
-                                <div class="result row">
-                                    <a href="#">
-                                        <img src="/image/album3.jpg" alt="#">
-                                        <label>Red</label>
-                                        <button class="follow ">
-                                            Follow
-                                            <i class="fa-solid fa-plus"></i>
-                                           </button>
-
-                                        <button class="following active">Following
-                                            <i class="fa-solid fa-check"></i>
-                                            </button>
-
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <a href="#">
-                                        <img src="/image/album3.jpg" alt="#">
-                                        <label>Red</label>
-                                        <button class="follow ">
-                                            Follow
-                                            <i class="fa-solid fa-plus"></i>
-                                           </button>
-
-                                        <button class="following active">Following
-                                            <i class="fa-solid fa-check"></i>
-                                            </button>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="result row">
-                                    <a href="#">
-                                        <img src="/image/album3.jpg" alt="#">
-                                        <label>Red</label>
-                                        <button class="follow active">
-                                            Follow
-                                            <i class="fa-solid fa-plus"></i>
-                                           </button>
-
-                                        <button class="following ">Following
-                                            <i class="fa-solid fa-check"></i>
-                                            </button>
-                                    </a>
-                                </div>
-                            </li>
-
 
                         </ul>
                         <div> <a href="/User/favorite-songs/show-all"><button style="margin-top: 12px;">show

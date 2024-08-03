@@ -19,4 +19,14 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Transactional
     @Query(value = "insert into user_favorite(user_id,track_id) values(?1,?2)",nativeQuery = true)
     void insertFavoriteSong(Long userId,Long trackId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from user_following where user_id = ?1 and artist_id = ?2",nativeQuery = true)
+    void unfollowArtist(Long userId,Long artistId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "insert into user_following (user_id,artist_id) values (?1,?2)",nativeQuery = true)
+    void followArtist(Long userId,Long artistId);
 }

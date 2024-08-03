@@ -7,4 +7,8 @@ public interface UserService extends CommonService<User> {
     void insertDefaultUserRole(Long userId);
 
     void insertFavoriteSong(Long userId,Long trackId);
+
+    void unfollowArtist(Long userId,Long artistId);
+
+    void followArtist(Long userId,Long artistId);
 }

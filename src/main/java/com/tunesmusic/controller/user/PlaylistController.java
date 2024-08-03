@@ -76,6 +76,10 @@ public class PlaylistController {
             playlist.setUser(user);
             playlist.setCoverPicture("/img/playlist/defaultImg.jpg");
             playlist.setDayCreated(new Date());
+            User user1 = userService.findById(user.getId());
+            List<Playlist> listPlaylistUser = user1.getListPlaylist();
+            String playlistName = "My Playlist #"+(listPlaylistUser.size()+1);
+            playlist.setPlaylistName(playlistName);
             playlistService.save(playlist);
             return "redirect:/tunesmusic/playlist" ;
 
