@@ -37,6 +37,9 @@ public class Artist {
     @Column(name = "year_activity")
     private Integer yearActivity;
 
+    @Column(name = "follower")
+    private Long follower;
+
     @OneToMany(mappedBy = "artist",fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Track> trackList = new ArrayList<>();

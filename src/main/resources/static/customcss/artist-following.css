@@ -181,6 +181,7 @@
 .artist-profile-header > div.category-artist {
     display: flex;
     justify-content: space-between; /* evenly space the buttons */
+    height: 80px;
 }
 
 .artist-profile-header > div.category-artist a {

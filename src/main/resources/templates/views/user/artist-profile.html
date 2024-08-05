@@ -18,13 +18,15 @@
                 <!-- Replace with your main content elements -->
                 <div class="artist-profile-header">
                     <div>
-                        <img th:src="@{${artist.getUser().getProfilePicture}}"alt="profile picture">
+                        <img th:src="@{${artist.getUser().getProfilePicture}}" alt="profile picture">
                     </div>
-                    <div >
+                    <div>
                         <h3 class="title page" th:text="${artist.getArtistName}"></h3>
                         <br>
+                        <h5 style="color: #d5a513" th:text="${artist.follower>1000000?((artist.follower/1000000)+' Milion'):
+                        (artist.follower>1000?(artist.follower/1000)+'K':(artist.follower))}+' Follower'"></h5>
                         <br>
-                        <h6 th:text="${artist.introduce}"></h6>
+                        <h6 style="color: #d5a513" th:text="${artist.introduce}"></h6>
                     </div>
                     <div class="category-artist">
                         <a href="#">
@@ -36,23 +38,25 @@
                         <a href="#">
                             <button>Posts</button>
                         </a>
-
-
                     </div>
+
                 </div>
 
                 <div class="list-result-search">
                     <ul>
                         <li th:each="track : ${artist.getTrackList()}">
                             <div class="result row" style="display: flex">
-                                <a class="ajax-link" style="width: 82%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                <a class="ajax-link" style="width: 82%;height: 100%;text-decoration: none"
+                                   th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
                                     <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
                                     <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName}"></label>
                                 </a>
                                 <div class="dropdown" style="width: 12%">
-                                    <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
+                                    <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;"
+                                       class="fa-solid fa-ellipsis"></i>
                                     <div class="dropdown-content">
-                                        <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                        <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to
+                                            Favorite</a>
                                         <div class="playlist-dropdown">
                                             <a href="#">Add to Playlist</a>
                                             <div class="playlist-list">

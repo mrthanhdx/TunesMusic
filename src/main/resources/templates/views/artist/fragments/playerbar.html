@@ -1,0 +1,39 @@
+<div class="music-player fixed-player" th:fragment="playerbar">
+
+    <div id="group1" style="display: flex; width: 20%;">
+        <img th:src="${trackPlay != null} ? ${trackPlay.sourceCoverImage} : '/img/logo.jpg'" alt="Album Cover" />
+        <div class="info">
+            <h1 th:text="${trackPlay != null} ? ${trackPlay.trackName} : 'Enjoy your music'"></h1>
+            <br>
+            <h2 th:text="${trackPlay != null} ? ${trackPlay.artist.artistName} : 'artist name'"></h2>
+            <audio id="audio" th:src="${trackPlay != null} ? ${trackPlay.sourceAudio} : ''"></audio>
+        </div>
+    </div>
+
+
+
+    <div id="group2">
+        <div class="control">
+            <div class="btn btn-repeat">
+                <i class="fas fa-redo"></i>
+            </div>
+            <div class="btn btn-prev">
+                <i class="fa-solid fa-step-backward"></i>
+            </div>
+            <div class="btn btn-toggle-play" id="btnPlay">
+                <i class="fas fa-pause icon-pause"></i>
+                <i class="fas fa-play icon-play"></i>
+            </div>
+            <div class="btn btn-next">
+                <i class="fas fa-step-forward"></i>
+            </div>
+            <div class="btn btn-random">
+                <i class="fas fa-random"></i>
+            </div>
+        </div>
+        <div class="progress-container">
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+        </div>
+
+    </div>
+</div>

@@ -6,6 +6,6 @@ import java.beans.Encoder;
 
 public class testPassword {
     public static void main(String[] args) {
-        System.out.println( new BCryptPasswordEncoder().encode("thanh123"));
+        System.out.println( new BCryptPasswordEncoder().encode("artist"));
     }
 }
