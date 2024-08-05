@@ -11,4 +11,6 @@ public interface UserService extends CommonService<User> {
     void unfollowArtist(Long userId,Long artistId);
 
     void followArtist(Long userId,Long artistId);
+
+    void removeTrackFromFavorite(Long userId,Long trackId);
 }

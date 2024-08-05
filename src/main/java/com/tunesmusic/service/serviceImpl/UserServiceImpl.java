@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void removeTrackFromFavorite(Long userId, Long trackId) {
+        userRepository.removeTrackFromFavorite(userId,trackId);
+    }
+
+    @Override
     public void save(User user) {
         userRepository.save(user);
     }

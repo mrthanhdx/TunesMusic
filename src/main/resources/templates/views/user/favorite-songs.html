@@ -48,7 +48,7 @@
                                     <div class="dropdown" style="width: 12%">
                                         <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
                                         <div class="dropdown-content">
-                                            <a th:href="@{/tunesmusic/remove-from-favorite(trackId=${track.id})}">Remove from favorite</a>
+                                            <a th:onclick="|handleRemoveFromFavorite(${track.id},event,this)|" th:href="@{/tunesmusic/remove-from-favorite(trackId=${track.id})}">Remove from favorite</a>
                                         </div>
                                     </div>
                                 </div>
