@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--    head-->
+<head th:replace="~{/user/fragments/head::head}"></head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="~{/user/fragments/sidebar::sidebar}"></div>
+        <!-- End Sidebar -->
+
+
+        <div class="col-md-9 content bg-dark">
+            <div th:replace="~{/user/fragments/header::header}"></div>
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Replace with your main content elements -->
+                <div class="artist-profile-header">
+                    <div>
+                        <img th:src="@{${artist.getUser().getProfilePicture}}"alt="profile picture">
+                    </div>
+                    <div >
+                        <h3 class="title page" th:text="${artist.getArtistName}"></h3>
+                        <br>
+                        <br>
+                        <h6 th:text="${artist.introduce}"></h6>
+                    </div>
+                    <div class="category-artist">
+                        <a href="#">
+                            <button class="active">Songs</button>
+                        </a>
+                        <a href="#">
+                            <button>Albums</button>
+                        </a>
+                        <a href="#">
+                            <button>Posts</button>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div class="list-result-search">
+                    <ul>
+                        <li th:each="track : ${artist.getTrackList()}">
+                            <div class="result row" style="display: flex">
+                                <a class="ajax-link" style="width: 82%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                    <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
+                                    <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName}"></label>
+                                </a>
+                                <div class="dropdown" style="width: 12%">
+                                    <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
+                                    <div class="dropdown-content">
+                                        <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                        <div class="playlist-dropdown">
+                                            <a href="#">Add to Playlist</a>
+                                            <div class="playlist-list">
+                                                <!-- List of playlists will be displayed here -->
+                                                <ul>
+                                                    <li th:each="playlist : ${listPlaylist}">
+                                                        <a class="btn-add-song-to-playlist"
+                                                           th:href="@{/tunesmusic/add-to-playlist(playlistId=${playlist.id}, trackId=${track.id})}">
+                                                            [[${playlist.playlistName}]]
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- Music Player -->
+    <div th:replace="~{/user/fragments/playerbar::playerbar}"></div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{/user/fragments/footer::footer}"></div>
+<!-- End Footer -->
+</div>
+
+<div th:replace="~{/user/fragments/foot::foot}"></div>
+</body>
+
+</html>

@@ -58,7 +58,7 @@
   .list-favorite-songs img {
     border-radius: 10px;
     margin-right: 5px;
-    width: 100px; /* Adjust based on your image size */
+    width: 80px; /* Adjust based on your image size */
     height: 80px; /* Adjust based on your image size */
     object-fit: cover;
   }
@@ -67,8 +67,8 @@
     color: aliceblue;
     font-size: 16px;
     font-family: 'Arial', sans-serif;
-    width: 85%;
-    margin-right: 5%;
+    width: 82%;
+    /*margin-right: 5%;*/
   }
   
   .list-favorite-songs label:hover {

@@ -1,10 +1,15 @@
 package com.tunesmusic.model;
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,6 +36,10 @@ public class Artist {
 
     @Column(name = "year_activity")
     private Integer yearActivity;
+
+    @OneToMany(mappedBy = "artist",fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Track> trackList = new ArrayList<>();
 
     // Getters and Setters
 }

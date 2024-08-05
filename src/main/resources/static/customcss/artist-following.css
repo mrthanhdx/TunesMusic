@@ -145,3 +145,45 @@
     background-color: #c4c1ba;
     text-decoration: none;
 }
+
+.artist-profile-header {
+    height: 220px;
+    width: 80%;
+    background-color: #2d3135;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    color: aliceblue;
+}
+
+.artist-profile-header > div:first-child {
+    width: 25%;
+}
+
+.artist-profile-header > div:first-child img {
+    width: 160px;
+    border-radius: 50%;
+}
+
+.artist-profile-header > div:nth-child(2) {
+    width: 60%;
+    margin-left: 30px;
+}
+
+.artist-profile-header > div:nth-child(2) h3.title.page {
+    margin-top: 0; /* remove default margin */
+}
+
+.artist-profile-header > div.category-artist {
+    display: flex;
+    justify-content: space-between; /* evenly space the buttons */
+}
+
+.artist-profile-header > div.category-artist a {
+    margin: 0 10px; /* add some space between buttons */
+}
+

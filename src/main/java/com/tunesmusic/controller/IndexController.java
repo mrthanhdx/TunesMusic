@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -70,8 +71,8 @@ public class IndexController {
             model.addAttribute("user",user);
             List<Playlist> listPlaylist = playlistService.findPlaylistByIdUser(user.getId());
             model.addAttribute("playlists",listPlaylist);
-        }
 
+        }
         List<Track> trackList = trackService.findTop5Track();
         model.addAttribute("listTrack",trackList);
         return "/user/search-page";
@@ -122,15 +123,7 @@ public class IndexController {
         }
     }
 
-    @GetMapping("/favorite-song/show-all")
-    @ResponseBody
-    public List<Track> showAllFavoriteSong(Authentication authentication,Model model){
-        CustomUserDetail customUserDetail =(CustomUserDetail) authentication.getPrincipal();
-        User user = customUserDetail.getUser();
-        User user1 = userService.findById(user.getId());
-        List<Track> listFavoriteTrack = user1.getListTrackFavorite();
-        return listFavoriteTrack;
-    }
+
     @GetMapping("/index")
     public String indexpage(){
         return "redirect:/tunesmusic";
@@ -147,5 +140,23 @@ public class IndexController {
         }
 
         return "/user/playlist-page";
+    }
+
+    @GetMapping("/artist-profile")
+    public String openArtistProfile(Model model,@RequestParam("artistId") Long artistId,Authentication authentication){
+        if (authentication!=null){
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+            User user = customUserDetail.getUser();
+            model.addAttribute("user",user);
+            List<Playlist> listPlaylist = playlistService.findPlaylistByIdUser(user.getId());
+            model.addAttribute("listPlaylist",listPlaylist);
+            for (Playlist playlist: listPlaylist
+                 ) {
+                System.out.println(playlist.getPlaylistName());
+            }
+        }
+        Artist artist = artistService.findById(artistId);
+        model.addAttribute("artist",artist);
+        return  "/user/artist-profile";
     }
 }
