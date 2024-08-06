@@ -19,11 +19,52 @@
                 <!-- Replace with your main content elements -->
                 <h1 class="title page" style="color: white">Your Playlist</h1>
                 <br>
-
-                        <a class="new-playlist-btn" href="/artist/tunesmusic/new-song">
+                <!-- Button trigger modal -->
+                        <button class="new-playlist-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i style="font-size: 22px;color: white;" class="fa-solid fa-plus"></i>
                             <label>New Song</label>
-                        </a>
+                        </button>
+
+
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">Create new song</h1>
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/artist/song-management/create-new-song">
+                                    <div class="mb-3">
+                                        <label for="trackName" class="form-label">Song's Name</label>
+                                        <input type="text" class="form-control" id="trackName" name="trackName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="trackImage" class="form-label">Choose Image</label>
+                                        <input type="file" class="form-control" name="sourceCoverImage" id="trackImage" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="trackAudio" class="form-label">Choose file .mp3</label>
+                                        <input type="file" class="form-control" name="sourceAudio" id="trackAudio" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">add new Song</button>
+                                </form>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary btn-refresh">Refesh</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="list-songs">
                     <table class="table table-dark">
@@ -35,6 +76,7 @@
                             <th scope="col">Streams</th>
                             <th scope="col">Date release</th>
                             <th scope="col">Action</th>
+                            <th scope="col">Play</th>
 
                         </tr>
                         </thead>
@@ -49,6 +91,9 @@
                                 <a href="#"class="btn btn-warning">Update Song info</a>
                                 <a href="#"class="btn btn-danger">Delete Song</a>
 
+                            </td>
+                            <td>
+                                <a class="ajax-link btn btn-primary" th:href="@{/tunesmusic/playsong(id=${track.id})}">Play</a>
                             </td>
                         </tr>
 
@@ -74,6 +119,7 @@
 </div>
 
 <div th:replace="~{/artist/fragments/foot::foot}"></div>
+<script src="/js/song-management.js"></script>
 
 </body>
 
