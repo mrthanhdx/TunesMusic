@@ -13,7 +13,8 @@ public interface ArtistRepository extends JpaRepository<Artist,Long> {
     @Query(value = "select * from user_following where user_id = ?1",nativeQuery = true)
     List<Artist> getArtistByUserId(Long userId);
 
-
+    @Query(value = "select * from artist where id_user = ?1",nativeQuery = true)
+    Artist getArtistByIdUser(Long idUser);
 
 
 }

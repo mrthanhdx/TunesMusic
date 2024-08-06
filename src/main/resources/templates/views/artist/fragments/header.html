@@ -1,6 +1,5 @@
 <div class="bg-dark header" th:fragment="header">
     <div th:if="${user!= null}" style="width: 100%;display: flex">
-        <a class="btn btn-outline-secondary col-1 header-element" th:href="@{/getpremium(userId=${user.id})}">Get Premium</a>
 
         <div class="user-info">
             <img id="mini-avatar" th:src="${user.profilePicture}" alt="">

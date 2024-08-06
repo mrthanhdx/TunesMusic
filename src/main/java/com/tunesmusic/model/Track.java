@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
 
 @Getter
@@ -17,6 +19,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "track")
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

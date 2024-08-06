@@ -1,6 +1,8 @@
 package com.tunesmusic.model;
 import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +12,8 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Getter
 @Setter
@@ -18,6 +22,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "artist")
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,8 +46,7 @@ public class Artist {
     @Column(name = "follower")
     private Long follower;
 
-    @OneToMany(mappedBy = "artist",fetch = FetchType.EAGER)
-    @JsonIgnore
+    @OneToMany(mappedBy = "artist", fetch = FetchType.EAGER)
     private List<Track> trackList = new ArrayList<>();
 
     // Getters and Setters

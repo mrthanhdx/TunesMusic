@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/artist/fragments/head::head}"></head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="~{/artist/fragments/sidebar::sidebar}"></div>
+
+        <!-- End Sidebar -->
+
+
+        <div class="col-md-9 content bg-dark">
+            <div th:replace="~{/artist/fragments/header::header}"></div>
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Replace with your main content elements -->
+                <h1 class="title page" style="color: white">Your Playlist</h1>
+                <br>
+
+                        <a class="new-playlist-btn" href="/artist/tunesmusic/new-song">
+                            <i style="font-size: 22px;color: white;" class="fa-solid fa-plus"></i>
+                            <label>New Song</label>
+                        </a>
+
+                <div class="list-songs">
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Song's name</th>
+                            <th scope="col">Streams</th>
+                            <th scope="col">Date release</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="track:${artist.getTrackList}">
+                            <th scope="row" th:text="${trackStat.index + 1}"></th>
+                            <td><img style="width: 64px;height: 64px" th:src="${track.getSourceCoverImage}" alt="Song cover image"></td>
+                            <td th:text="${track.trackName}" >Otto</td>
+                            <td th:text="${track.playCount}">Otto</td>
+                            <td th:text="${track.dayAdded}">Otto</td>
+                            <td>
+                                <a href="#"class="btn btn-warning">Update Song info</a>
+                                <a href="#"class="btn btn-danger">Delete Song</a>
+
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- Music Player -->
+    <div th:replace="/artist/fragments/playerbar::playerbar"></div>
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div th:replace="/artist/fragments/footer::footer"></div>
+<!-- End Footer -->
+</div>
+
+<div th:replace="~{/artist/fragments/foot::foot}"></div>
+
+</body>
+
+</html>

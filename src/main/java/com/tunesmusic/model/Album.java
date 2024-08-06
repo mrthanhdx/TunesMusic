@@ -1,5 +1,6 @@
 package com.tunesmusic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "id_artist")
+    @JsonIgnore
     private Artist artist;
     // Getters and Setters
 }
