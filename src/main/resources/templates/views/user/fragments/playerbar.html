@@ -1,7 +1,7 @@
 <div class="music-player fixed-player" th:fragment="playerbar">
 
     <div id="group1" style="display: flex; width: 20%;">
-        <img th:src="${trackPlay != null} ? ${trackPlay.sourceCoverImage} : '/img/logo.jpg'" alt="Album Cover" />
+        <img th:src="${trackPlay != null} ? ${trackPlay.sourceCoverImage} : '/img/icon/favicon.png'" alt="Song Image" />
         <div class="info">
             <h1 th:text="${trackPlay != null} ? ${trackPlay.trackName} : 'Enjoy your music'"></h1>
             <br>
