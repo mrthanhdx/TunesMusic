@@ -52,7 +52,7 @@
                 <label class="content-title">Artist Viral </label>
                 <div class="row list-content">
                     <div class="block-content" th:each="artist : ${listArtistViral}">
-                        <a th:href="@{/tunesmusic/artist(id=${artist.id})}">
+                        <a th:href="@{/tunesmusic/artist-profile(artistId=${artist.id})}">
                             <img th:src="@{${artist.user.profilePicture}}" alt="artist profile picture">
                             <label th:text="${artist.artistName}"></label>
                         </a>

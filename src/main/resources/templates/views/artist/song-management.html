@@ -39,11 +39,17 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="/artist/song-management/create-new-song">
+                                <form action="/artist/tunesmusic/song-management/create-new-song" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="trackName" class="form-label">Song's Name</label>
                                         <input type="text" class="form-control" id="trackName" name="trackName" required>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label for="trackDescription" class="form-label">Song's Name</label>
+                                        <input type="text" class="form-control" id="trackDescription" name="trackDescription" required>
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="trackImage" class="form-label">Choose Image</label>
                                         <input type="file" class="form-control" name="sourceCoverImage" id="trackImage" required>
@@ -65,6 +71,19 @@
                     </div>
                 </div>
 
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img id="toastIcon" style="width: 20px;height: 20px" src="/img/icon/error.jpg" class="rounded me-2" alt="error">
+                            <strong id="toastTitle" class="me-auto">Error</strong>
+                            <small id="currentTime">11 mins ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Hello, world! This is a toast message.
+                        </div>
+                    </div>
+                </div>
 
                 <div class="list-songs">
                     <table class="table table-dark">
