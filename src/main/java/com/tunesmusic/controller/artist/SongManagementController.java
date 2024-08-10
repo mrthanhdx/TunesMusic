@@ -1,6 +1,7 @@
 package com.tunesmusic.controller.artist;
 
 import com.tunesmusic.model.Artist;
+import com.tunesmusic.model.Genre;
 import com.tunesmusic.model.Track;
 import com.tunesmusic.model.User;
 import com.tunesmusic.security.CustomUserDetail;
@@ -39,6 +40,7 @@ public class SongManagementController {
                                 @RequestParam("sourceCoverImage")MultipartFile imageFile,
                                 @RequestParam("sourceAudio") MultipartFile audioFile,
                                 @RequestParam("trackDescription") String trackDescription,
+                                @RequestParam("genreId") Long idGenre,
                                 Authentication authentication,
                                 RedirectAttributes redirectAttributes){
         CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
@@ -47,13 +49,15 @@ public class SongManagementController {
         try {
             String audiotrackDir = "/audio/" + storageService.store(audioFile);
             String imgTrackDir  = "/img/songImage/" + storageService.store(imageFile);
-
+            Genre genre = new Genre();
+            genre.setId(idGenre);
             Track track = new Track();
             track.setArtist(artist);
             track.setTrackName(trackName);
             track.setDescription(trackDescription);
             track.setPlayCount(0L);
             track.setStatus(1);
+            track.setGenre(genre);
             track.setDayAdded(new Date());
             track.setSourceCoverImage(imgTrackDir);
             track.setSourceAudio(audiotrackDir);

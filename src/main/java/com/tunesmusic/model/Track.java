@@ -52,5 +52,19 @@ public class Track {
     @Column(name = "play_count")
     private Long playCount;
 
+    @ManyToOne
+    @JoinColumn(name = "id_genre")
+    private Genre genre;
+
+
+    public String getFormattedPlayCount() {
+        if (this.playCount >= 1_000_000) {
+            return String.format("%.1fm streams", this.playCount / 1_000_000.0);
+        } else if (this.playCount >= 1_000) {
+            return String.format("%dk%d streams", this.playCount / 1_000, (this.playCount % 1_000) / 100);
+        } else {
+            return this.playCount + " streams";
+        }
+    }
     // Getters and Setters
 }

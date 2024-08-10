@@ -15,7 +15,7 @@ public interface TrackRepository extends JpaRepository<Track,Long> {
     @Query(value = "SELECT * FROM track WHERE track_name LIKE %?1%", nativeQuery = true)
     List<Track> findTrackByTrackName(String trackname);
 
-    @Query(value = "SELECT * FROM track ORDER BY play_count desc ",nativeQuery = true)
+    @Query(value = "SELECT * FROM track ORDER BY play_count desc  limit 5",nativeQuery = true)
     List<Track> findTop5TrackOrderByDesc();
 
     @Query(value = "SELECT * FROM track ORDER BY play_count desc limit 5",nativeQuery = true)

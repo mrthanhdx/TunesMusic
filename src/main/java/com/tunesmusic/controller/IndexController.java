@@ -91,6 +91,16 @@ public class IndexController {
         return "/user/artist-following";
     }
 
+    public String formatPlayCount(int playCount) {
+        if (playCount >= 1_000_000) {
+            return String.format("%.1fx streams", playCount / 1_000_000.0);
+        } else if (playCount >= 1_000) {
+            return String.format("%dk%d streams", playCount / 1_000, (playCount % 1_000) / 100);
+        } else {
+            return playCount + " streams";
+        }
+    }
+
     @GetMapping("/charts")
     public String openChartsPage(Model model,Authentication authentication){
         if (authentication!=null) {
@@ -100,6 +110,7 @@ public class IndexController {
         }
         List<Track> trackList = trackService.findTop5TrackOrderByDESC();
         model.addAttribute("listTrack",trackList);
+        model.addAttribute("formatPlayCount",formatPlayCount(1));
         return "/user/charts-page";
     }
 
