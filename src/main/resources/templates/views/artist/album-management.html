@@ -20,16 +20,16 @@
                 <h1 class="title page" style="color: white">Your Playlist</h1>
                 <br>
                 <!-- Button trigger modal -->
-                        <button class="new-playlist-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i style="font-size: 22px;color: white;" class="fa-solid fa-plus"></i>
-                            <label>New Song</label>
-                        </button>
+                <button class="new-playlist-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i style="font-size: 22px;color: white;" class="fa-solid fa-plus"></i>
+                    <label>New Album</label>
+                </button>
 
 
 
 
 
-                <!-- Modal -->
+                 Modal
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -39,35 +39,26 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form onsubmit="handleCreateNewSong(this,event)" action="/artist/tunesmusic/song-management/create-new-song" method="post" enctype="multipart/form-data">
+                                <form onsubmit="handleCreateNewAlbum(this,event)" action="/artist/tunesmusic/album-management/create-new-album" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label for="trackName" class="form-label">Song's Name</label>
-                                        <input type="text" class="form-control" id="trackName" name="trackName" required>
+                                        <label for="albumName" class="form-label">Album's Name</label>
+                                        <input type="text" class="form-control" id="albumName" name="albumName" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="trackDescription" class="form-label">Description</label>
-                                        <input type="text" class="form-control" id="trackDescription" name="trackDescription" required>
+                                        <label for="albumDescription" class="form-label">Description</label>
+                                        <input type="text" class="form-control" id="albumDescription" name="albumDescription" required>
                                     </div>
-                                    <label>Genre</label>
-                                    <select class="form-select" name="genreId">
-                                        <option selected value="1">US UK</option>
-                                        <option value="2">V-Pop</option>
-                                        <option value="3">K-Pop</option>
-                                    </select>
-                                    
+
+
                                     <div class="mb-3">
                                         <label for="trackImage" class="form-label">Choose Image</label>
                                         <input type="file" class="form-control" name="sourceCoverImage" id="trackImage" required>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="trackAudio" class="form-label">Choose file .mp3</label>
-                                        <input type="file" class="form-control" name="sourceAudio" id="trackAudio" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">add new Song</button>
+                                    <button type="submit" class="btn btn-primary">Confirm create new album</button>
                                 </form>
-                                
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -89,7 +80,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                             </div>
                             <div class="toast-body" th:text="${message}">
-                                Create new song successfully!
+                                Create new album successfully!
                             </div>
                         </div>
                     </div>
@@ -101,29 +92,30 @@
                         <tr>
                             <th scope="col">Index</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Song's name</th>
-                            <th scope="col">Streams</th>
+                            <th scope="col">Album's name</th>
+                            <th scope="col">Number of songs</th>
+                            <th scope="col">status</th>
                             <th scope="col">Date release</th>
                             <th scope="col">Action</th>
-                            <th scope="col">Play</th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="track:${artist.getTrackList}">
-                            <th scope="row" th:text="${trackStat.index + 1}"></th>
-                            <td><img style="width: 64px;height: 64px" th:src="${track.getSourceCoverImage}" alt="Song cover image"></td>
-                            <td th:text="${track.trackName}" >Otto</td>
-                            <td th:text="${track.playCount}">Otto</td>
-                            <td th:text="${track.dayAdded}">Otto</td>
+                        <tr th:each="album:${listAlbum}">
+                            <th scope="row" th:text="${albumStat.index + 1}"></th>
+                            <td><img style="width: 64px;height: 64px" th:src="${album.sourceCoverPhoto}" alt="album cover image"></td>
+                            <td th:text="${album.title}" ></td>
+                            <td th:text="${album.listTrackAlbum.size()}" ></td>
+                            <td th:text="${album.status==1?'Released':'Not released yet'}"></td>
+                            <td th:text="${album.dateRelease}"></td>
                             <td>
-                                <a href="#"class="btn btn-warning">Update Song info</a>
-<!--                                <a href="#"class="btn btn-danger">Delete Song</a>-->
+
+                                <a href="#"class="btn btn-primary">View as user</a>
+
+                                <a href="#"class="btn btn-success">Manage album</a>
 
                             </td>
-                            <td>
-                                <a class="ajax-link btn btn-primary" th:href="@{/tunesmusic/playsong(id=${track.id})}">Play</a>
-                            </td>
+
                         </tr>
 
                         </tbody>
@@ -160,7 +152,7 @@
 </div>
 
 <div th:replace="~{/artist/fragments/foot::foot}"></div>
-<script src="/js/song-management.js"></script>
+<script src="/js/album-management.js"></script>
 
 </body>
 

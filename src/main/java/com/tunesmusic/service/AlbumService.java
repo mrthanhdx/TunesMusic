@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface AlbumService extends CommonService<Album>{
     List<Album> findTop5Album();
+    List<Album> getListAlbumByIdArtist(Long idArtist);
+
 }

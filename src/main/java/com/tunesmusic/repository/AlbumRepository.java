@@ -10,4 +10,6 @@ import java.util.List;
 public interface AlbumRepository extends JpaRepository<Album,Long> {
     @Query(value = "select * from Album limit 5",nativeQuery = true)
     List<Album> getList5Album();
+    @Query(value = "select  * from album where id_artist = ?1",nativeQuery = true)
+    List<Album> getListAlbumByArtistId(Long artistId);
 }

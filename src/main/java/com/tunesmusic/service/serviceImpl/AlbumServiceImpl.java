@@ -34,4 +34,9 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Album> findTop5Album(){
         return albumRepository.getList5Album();
     }
+
+    @Override
+    public List<Album> getListAlbumByIdArtist(Long idArtist) {
+        return albumRepository.getListAlbumByArtistId(idArtist);
+    }
 }

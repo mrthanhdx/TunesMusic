@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,9 +37,19 @@ public class Album {
     @Column(name = "source_cover_photo")
     private String sourceCoverPhoto;
 
+
+    @Column(name = "status")
+    private Integer status;
     @ManyToOne
     @JoinColumn(name = "id_artist")
     @JsonIgnore
     private Artist artist;
     // Getters and Setters
+
+    @ManyToMany
+    @JoinTable(
+            name = "album_track",
+            joinColumns = {@JoinColumn(name = "album_id",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id",referencedColumnName = "id")})
+    List<Track> listTrackAlbum =  new ArrayList<>();
 }
