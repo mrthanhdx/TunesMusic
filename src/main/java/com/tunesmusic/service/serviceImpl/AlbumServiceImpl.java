@@ -39,4 +39,14 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Album> getListAlbumByIdArtist(Long idArtist) {
         return albumRepository.getListAlbumByArtistId(idArtist);
     }
+
+    @Override
+    public void addTrackToAlbum(Long idAlbum, Long idTrack) {
+        albumRepository.addSongToAlbum(idAlbum,idTrack);
+    }
+
+    @Override
+    public void deleteTrackFromAlbum(Long idAlbum, Long idTrack) {
+        albumRepository.deleteSongFromAlbum(idAlbum,idTrack);
+    }
 }

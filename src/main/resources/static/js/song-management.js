@@ -4,5 +4,6 @@ btnRefreshData.on("click", () => {
     $("#trackName").val("");
     $("#trackImage").val("");
     $("#trackAudio").val("");
+    $("#trackDescription").val("");
 });
 

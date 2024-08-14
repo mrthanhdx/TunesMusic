@@ -75,6 +75,7 @@ var stopAudio = function () {
     audioElement.currentTime = 0;
 }
 var updateSongInfo = function (index) {
+    console.log(trackList);
     // Update songInfo HTML based on currentIndex
     if (currentIndex !== undefined && trackList[index]) {
         songInfo.innerHTML = `

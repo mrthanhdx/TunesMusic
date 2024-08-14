@@ -12,8 +12,10 @@ public interface StorageService {
 
     void init();
 
-    String
-    store(MultipartFile file);
+    String store(MultipartFile file);
+
+    String storeImageAlbum(MultipartFile file);
+
 
     Stream<Path> loadAll();
 

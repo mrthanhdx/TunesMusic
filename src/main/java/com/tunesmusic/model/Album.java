@@ -1,6 +1,8 @@
 package com.tunesmusic.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "album")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

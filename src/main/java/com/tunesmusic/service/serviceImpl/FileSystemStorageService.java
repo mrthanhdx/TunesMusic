@@ -1,6 +1,7 @@
 package com.tunesmusic.service.serviceImpl;
 
 import com.tunesmusic.exception.StorageException;
+import com.tunesmusic.properties.AlbumImageStorageProperties;
 import com.tunesmusic.properties.AudioStorageProperties;
 import com.tunesmusic.properties.ImageStorageProperties;
 import com.tunesmusic.service.StorageService;
@@ -23,6 +24,7 @@ public class FileSystemStorageService implements StorageService {
     private final Path imageRootLocation;
     private final Path audioRootLocation;
 
+    private final Path albumImageRootLocation;
 
     private String getFileType(MultipartFile file) {
         // Implement a method to determine the file type based on the file extension
@@ -41,7 +43,7 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Autowired
-    public FileSystemStorageService(ImageStorageProperties imageProperties, AudioStorageProperties audioProperties) {
+    public FileSystemStorageService(ImageStorageProperties imageProperties, AudioStorageProperties audioProperties, AlbumImageStorageProperties albumImageProperties) {
         if (imageProperties.getUploadDir().trim().isEmpty()) {
             throw new StorageException("Image upload location cannot be empty.");
         }
@@ -50,6 +52,7 @@ public class FileSystemStorageService implements StorageService {
         }
         this.imageRootLocation = Paths.get(imageProperties.getUploadDir());
         this.audioRootLocation = Paths.get(audioProperties.getUploadDir());
+        this.albumImageRootLocation = Paths.get(albumImageProperties.getUploadDir());
     }
 
 
@@ -87,6 +90,24 @@ public class FileSystemStorageService implements StorageService {
         }
 
         // Return the unique filename for database storage
+        return uniqueFilename;
+    }
+
+    @Override
+    public String storeImageAlbum(MultipartFile file) {
+        if (file.isEmpty()){
+            throw new StorageException("file can not be empty !");
+        }
+
+        String originalFilename = file.getOriginalFilename();
+        String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
+        Path destinationFile;
+        destinationFile = albumImageRootLocation.resolve(uniqueFilename);
+        try {
+            Files.copy(file.getInputStream(),destinationFile,StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e){
+            throw new StorageException("Failed to store file " + uniqueFilename, e);
+        }
         return uniqueFilename;
     }
 

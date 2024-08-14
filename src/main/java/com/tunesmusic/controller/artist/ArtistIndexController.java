@@ -16,10 +16,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -181,5 +183,23 @@ public class ArtistIndexController {
         model.addAttribute("user",user);
         model.addAttribute("listAlbum",listAlbum);
         return "/artist/album-management";
+    }
+
+    @PostMapping("/new-playlist")
+    public String createNewPlaylist(Authentication authentication){
+
+        CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
+        User user  = customUserDetail.getUser();
+        Playlist playlist = new Playlist();
+        playlist.setUser(user);
+        playlist.setCoverPicture("/img/playlist/defaultImg.jpg");
+        playlist.setDayCreated(new Date());
+        User user1 = userService.findById(user.getId());
+        List<Playlist> listPlaylistUser = user1.getListPlaylist();
+        String playlistName = "My Playlist #"+(listPlaylistUser.size()+1);
+        playlist.setPlaylistName(playlistName);
+        playlistService.save(playlist);
+        return "redirect:/tunesmusic/artist/playlist" ;
+
     }
 }
