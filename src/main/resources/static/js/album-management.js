@@ -21,7 +21,7 @@ function handleAddSongToAlbum(event,element){
                             <td>${track.dayAdded}</td>
                             <td>
                                 <a href="/artist/tunesmusic/album-management/remove-song-from-album?idAlbum=${idAlbum}&idSong=${track.id}"
-                                   class="btn btn-danger">Remove from album</a>
+                                   class="btn btn-danger btn-remove-song-from-album">Remove from album</a>
                             </td>
                             <td>
                                 <a class="ajax-link btn btn-primary" href="/tunesmusic/playsong?id=${track.id}">Play</a>
@@ -57,7 +57,7 @@ function handleRemoveSongFromAlbum(element,event){
                             <td>${track.dayAdded}</td>
                             <td>
                                 <a href="/artist/tunesmusic/album-management/remove-song-from-album?idAlbum=${idAlbum}&idSong=${track.id}"
-                                   class="btn btn-danger">Remove from album</a>
+                                   class="btn btn-danger btn-remove-song-from-album"">Remove from album</a>
                             </td>
                             <td>
                                 <a class="ajax-link btn btn-primary" href="/tunesmusic/playsong?id=${track.id}">Play</a>
@@ -119,6 +119,44 @@ $(document).ready(function () {
             }
         }
     })
+
+
+    $(".list-songs").on("click", ".btn-remove-song-from-album", function (e) {
+        e.preventDefault();
+        var url = $(this).attr("href");
+    console.log(url)
+        $.ajax({
+            url:url,
+            method:"GET",
+            success:(response)=>{
+                renderNewListSong(response);
+            }
+        })
+        function renderNewListSong(newListSong){
+            var htmls ="";
+            var idAlbum = $("#idDetailAlbum").val();
+            var listSongAlbum = $("#listSongAlbum");
+            newListSong.forEach((track,i)=>{
+                htmls+=  `<tr>
+                            <th scope="row">${i}</th>
+                            <td><img style="width: 64px;height: 64px" src="${track.sourceCoverImage}" alt="Song cover image"></td>
+                            <td>${track.trackName}</td>
+                            <td>${track.playCount}</td>
+                            <td>${track.dayAdded}</td>
+                            <td>
+                                <a href="/artist/tunesmusic/album-management/remove-song-from-album?idAlbum=${idAlbum}&idSong=${track.id}"
+                                   class="btn btn-danger btn-remove-song-from-album">Remove from album</a>
+                            </td>
+                            <td>
+                                <a class="ajax-link btn btn-primary" href="/tunesmusic/playsong?id=${track.id}">Play</a>
+                            </td>
+                        </tr>`
+            })
+            listSongAlbum.html(htmls);
+            handleAddToPlaylist1("success");
+        }
+    })
+
 })
 
 

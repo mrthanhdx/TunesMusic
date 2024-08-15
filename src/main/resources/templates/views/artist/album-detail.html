@@ -123,7 +123,7 @@
                             <td th:text="${track.dayAdded}">Otto</td>
                             <td>
                                 <a th:href="@{/artist/tunesmusic/album-management/remove-song-from-album(idAlbum=${albumDetail.id}, idSong=${track.id})}"
-                                  onclick="handleRemoveSongFromAlbum(this,event)" class="btn btn-danger">Remove from album</a>
+                                  onclick="handleRemoveSongFromAlbum(this,event)" class="btn btn-danger  btn-remove-song-from-album">Remove from album</a>
                             </td>
                             <td>
                                 <a class="ajax-link btn btn-primary" th:href="@{/tunesmusic/playsong(id=${track.id})}">Play</a>
@@ -138,18 +138,7 @@
             <!-- End Main Content -->
         </div>
     </div>
-<!--    <script>-->
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!--            var toastElement = document.getElementById('liveToast');-->
-<!--            if (toastElement) {-->
-<!--                var toast = new bootstrap.Toast(toastElement);-->
-<!--                toast.show();-->
-<!--                setTimeout(()=>{-->
-<!--                    toast.hide();-->
-<!--                },8000);-->
-<!--            }-->
-<!--        });-->
-<!--    </script>-->
+
     <!-- Music Player -->
     <div th:replace="/artist/fragments/playerbar::playerbar"></div>
 
