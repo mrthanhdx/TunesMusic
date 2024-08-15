@@ -71,6 +71,16 @@ public class AlbumManagementController {
         return album.getListTrackAlbum();
     }
 
+    @GetMapping("/release-album")
+    public String releaseAlbum(@RequestParam("idAlbum") Long idAlbum,
+                               RedirectAttributes redirectAttributes){
+        Album album = albumService.findById(idAlbum);
+        albumService.updateAlbumStatus(idAlbum);
+        redirectAttributes.addFlashAttribute("isSuccess", true);
+        redirectAttributes.addFlashAttribute("message", "release album "+album.getTitle()+" successfully !");
+        return "redirect:/artist/tunesmusic/album-management";
+    }
+
     @PostMapping("/create-new-album")
     public String createNewAlbum(@RequestParam("albumName") String albumName,
                                  @RequestParam("albumDescription") String albumDescription,

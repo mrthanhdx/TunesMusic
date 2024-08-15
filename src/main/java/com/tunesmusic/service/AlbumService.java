@@ -12,4 +12,6 @@ public interface AlbumService extends CommonService<Album>{
 
     void deleteTrackFromAlbum(Long idAlbum,Long idTrack);
 
+    void updateAlbumStatus(Long idAlbum);
+
 }

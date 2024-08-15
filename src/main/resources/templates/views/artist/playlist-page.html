@@ -19,17 +19,17 @@
                     <!-- Replace with your main content elements -->
                     <h1 class="title page" style="color: white">Your Playlist</h1>
                     <br>
-                    <form action="/tunesmusic/new-playlist" method="post">
+                    <form action="/artist/tunesmusic/new-playlist" method="post">
                         <div class="centered-btn">
                         <button class="new-playlist-btn" type="submit">
                             <i style="font-size: 22px;color: white;" class="fa-solid fa-plus"></i>
-                            <label>  New Playlist</label>
+                            <label>  New Playlisttt</label>
                         </button>
                     </div></form>
                     <div class="list-songs">
                         <ul>
                             <li th:each="playlist: ${listPlaylist}">
-                                <a style="text-decoration: none" th:href="@{/tunesmusic/playlist/detail(IdPlaylist=${playlist.id})}" class="song row">
+                                <a style="text-decoration: none" th:href="@{/artist/tunesmusic/playlist/detail(IdPlaylist=${playlist.id})}" class="song row">
                                     <img th:src="@{${playlist.coverPicture}}" alt="#">
                                     <label th:text="${playlist.playlistName}"></label>
                                 </a>

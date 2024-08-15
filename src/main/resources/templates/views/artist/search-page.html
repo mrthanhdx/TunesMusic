@@ -18,7 +18,7 @@
                     <!-- Replace with your main content elements -->
                     <div class="search-header">
                         <div class="search-bar row;">
-                            <form id="searchForm" onsubmit="handleSearch(event)">
+                            <form id="searchForm" onsubmit="ArtistHandleSearch(event)">
                                 <input class="search-input" id="keysearch" name="keysearch" type="text" placeholder="What do you want to play ?">
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -47,7 +47,7 @@
                                     <div class="dropdown" style="width: 12%">
                                         <i onclick="toggleDropdown(this)" style="width: 20px; cursor: pointer;" class="fa-solid fa-ellipsis"></i>
                                         <div class="dropdown-content">
-                                            <a th:href="@{/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
+                                            <a th:href="@{/artist/tunesmusic/add-to-favorite(trackId=${track.id})}">Add to Favorite</a>
                                             <div class="playlist-dropdown">
                                                 <a href="#">Add to Playlist</a>
                                                 <div class="playlist-list">

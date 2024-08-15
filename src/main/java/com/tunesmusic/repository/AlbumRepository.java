@@ -24,4 +24,9 @@ public interface AlbumRepository extends JpaRepository<Album,Long> {
     @Transactional
     @Query(value = "delete from album_track where album_id=?1 and track_id=?2",nativeQuery = true)
     void deleteSongFromAlbum(Long idAlbum,Long idTrack);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update album set status = 1 where id = ?1",nativeQuery = true)
+    void updateAlbumStatus(Long idAlbum);
 }

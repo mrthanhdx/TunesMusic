@@ -26,8 +26,10 @@
                     <label>Add song to this album</label>
                 </button>
 
-
-
+<!--    button release album-->
+    <div th:if="${albumDetail.status==0}" style="position: absolute;right: 320px">
+        <a th:href="@{/artist/tunesmusic/album-management/release-album(idAlbum=${albumDetail.id})}" class="btn btn-outline-success">Release Album</a>
+    </div>
 
 
 <!--                 Modal-->
@@ -79,8 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <!--                                        th:text="${isSuccess ? 'Success' : 'Error'}"-->
-                <!--                                     th:src="${isSuccess ? '/img/icon/success.jpg' : '/img/icon/error.jpg'}"-->
+
 <!--                Toast Message-->
                     <div class="toast-container position-fixed bottom-0 end-0 p-3">
                         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

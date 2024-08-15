@@ -177,6 +177,12 @@ function handleSearch(event) {
     window.location.href = url;
 }
 
+function ArtistHandleSearch(event) {
+    event.preventDefault();
+    const keysearch = document.getElementById('keysearch').value;
+    const url = `/artist/tunesmusic/search/search-song?keysearch=${encodeURIComponent(keysearch)}`;
+    window.location.href = url;
+}
 window.onkeydown = function(e) {
     if (e.keyCode == 32) { // space bar
         btnplay2.click(); // call the click method

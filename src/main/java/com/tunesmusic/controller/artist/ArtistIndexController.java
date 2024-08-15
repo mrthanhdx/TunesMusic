@@ -199,7 +199,7 @@ public class ArtistIndexController {
         String playlistName = "My Playlist #"+(listPlaylistUser.size()+1);
         playlist.setPlaylistName(playlistName);
         playlistService.save(playlist);
-        return "redirect:/tunesmusic/artist/playlist" ;
+        return "redirect:/artist/tunesmusic/playlist" ;
 
     }
 }

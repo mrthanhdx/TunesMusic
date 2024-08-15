@@ -49,4 +49,9 @@ public class AlbumServiceImpl implements AlbumService {
     public void deleteTrackFromAlbum(Long idAlbum, Long idTrack) {
         albumRepository.deleteSongFromAlbum(idAlbum,idTrack);
     }
+
+    @Override
+    public void updateAlbumStatus(Long idAlbum) {
+        albumRepository.updateAlbumStatus(idAlbum);
+    }
 }
