@@ -26,12 +26,7 @@ public class ArtistSearchController {
 
     @Autowired
     TrackService trackService;
-    @GetMapping("/playsong")
-    @ResponseBody
-    public Track playSong(Model model, @RequestParam("trackid") Long id) {
-        Track track = trackService.findById(id);
-        return track;
-    }
+
 
     @GetMapping("/search-song")
     public String searchSong(Model model, @RequestParam("keysearch") String keySearch, Authentication authentication){

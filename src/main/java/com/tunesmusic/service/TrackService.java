@@ -12,4 +12,6 @@ public interface TrackService extends CommonService<Track>{
 
     List<Track> findAllTrackOrderByDESC();
 
+    void increasePlayCount(Long playCount,Long idSong);
+
 }

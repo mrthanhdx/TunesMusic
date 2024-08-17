@@ -53,4 +53,9 @@ public class TrackServiceImpl implements TrackService {
     public List<Track> findAllTrackOrderByDESC() {
         return trackRepository.findAllTrackOrderByDesc();
     }
+
+    @Override
+    public void increasePlayCount(Long playCount, Long idSong) {
+        trackRepository.increasePlayCount(playCount,idSong);
+    }
 }

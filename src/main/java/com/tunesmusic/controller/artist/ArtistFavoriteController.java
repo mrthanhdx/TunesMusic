@@ -40,12 +40,7 @@ public class ArtistFavoriteController {
     @Autowired
     PlaylistService playlistService;
 
-    @GetMapping("/playsong")
-    @ResponseBody
-    public Track playSong(Model model, @RequestParam("id") Long id) {
-        Track track = trackService.findById(id);
-        return track;
-    }
+
 
     @GetMapping("/add-to-favorite")
     public String addTrackToFavorite(@RequestParam("trackId") Long trackId, Authentication authentication, Model model) {

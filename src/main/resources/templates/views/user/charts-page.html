@@ -39,7 +39,7 @@
                     <ul>
                         <li th:each="track, iterStat : ${listTrack}">
                             <div th:class="'result row position-' + ${iterStat.index + 1}" style="display: flex">
-                                <a class="ajax-link" style="width: 79%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/search/playsong(trackid=${track.id})}">
+                                <a class="ajax-link" style="width: 79%;height: 100%;text-decoration: none" th:href="@{/tunesmusic/playsong(id=${track.id})}">
                                     <img th:src="@{${track.sourceCoverImage}}" alt="song cover photo">
                                     <label th:text="${track.trackName} + ' - ' + ${track.artist.artistName} +'--   '+${track.getFormattedPlayCount()}"></label>
                                 </a>

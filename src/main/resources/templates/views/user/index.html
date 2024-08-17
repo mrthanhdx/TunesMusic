@@ -40,7 +40,7 @@
                 <label class="content-title">Album Hot 2024</label>
                 <div class="row list-content">
                     <div class="block-content" th:each="album: ${listAlbum}">
-                        <a th:href="@{/tunesmusic/album(id=${album.id})}">
+                        <a th:href="@{/tunesmusic/album-detail(idAlbum=${album.id})}">
                             <img th:src="@{${album.sourceCoverPhoto}}">
                             <label th:text="${album.title}+'-'+${album.artist.artistName}"></label>
                         </a>

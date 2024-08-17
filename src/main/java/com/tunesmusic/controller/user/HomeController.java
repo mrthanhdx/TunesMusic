@@ -37,6 +37,10 @@ public class HomeController {
     @ResponseBody
     public Track playSong(Model model, @RequestParam("id") Long id) {
         Track track = trackService.findById(id);
+        Long currentPlayCount = track.getPlayCount();
+        Long newPlayCount = currentPlayCount+2;
+        trackService.increasePlayCount(newPlayCount,id);
+        System.out.println(newPlayCount);
         return track;
     }
 
