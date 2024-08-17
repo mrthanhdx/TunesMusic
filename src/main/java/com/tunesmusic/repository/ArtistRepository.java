@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ArtistRepository extends JpaRepository<Artist,Long> {
-    @Query(value = "select * from Artist LIMIT 5" ,nativeQuery = true)
+    @Query(value = "select * from Artist order by follower desc LIMIT 5" ,nativeQuery = true)
     List<Artist> getList5Artist();
 
     @Query(value = "select * from user_following where user_id = ?1",nativeQuery = true)

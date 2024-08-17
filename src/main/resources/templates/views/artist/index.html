@@ -61,36 +61,12 @@
                 </div>
 
 
-                <label class="content-title">Playlist for your mood</label>
-                <div class="row list-content">
-                    <div class="block-content">
-                        <a href="#">
-                            <img src="/img/album1.jpg" alt="album1">
-                            <label>The Red - Taylor Swift</label>
-                        </a>
-                    </div>
-                    <div class="block-content">
-                        <a href="#">
-                            <img src="/img/album1.jpg" alt="album1">
-                            <label>The Red - Taylor Swift</label>
-                        </a>
-                    </div>
-                    <div class="block-content">
-                        <a href="#">
-                            <img src="/img/album1.jpg" alt="album1">
-                            <label>The Red - Taylor Swift</label>
-                        </a>
-                    </div>
-                    <div class="block-content">
-                        <a href="#">
-                            <img src="/img/album1.jpg" alt="album1">
-                            <label>The Red - Taylor Swift</label>
-                        </a>
-                    </div>
-                    <div class="block-content">
-                        <a href="#">
-                            <img src="/img/album1.jpg" alt="album1">
-                            <label>The Red - Taylor Swift</label>
+                <label class="content-title">Vpop Hot Hits</label>
+                <div class="row list-content" >
+                    <div class="block-content" th:each="track:${list5VPopTrack}">
+                        <a class="ajax-link" th:href="@{/tunesmusic/playsong(id=${track.id})}">
+                            <img th:src="@{''+${track.sourceCoverImage}}" alt="Album Cover">
+                            <label th:text="${track.trackName}+'-'+${track.artist.artistName}"></label>
                         </a>
                     </div>
                 </div>

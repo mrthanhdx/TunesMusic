@@ -51,6 +51,8 @@ public class IndexController {
             model.addAttribute("user", user);
         }
         List<Track> trackList = trackService.findTop5Track();
+        List<Track> list5VPopTrack = trackService.find5TrackByIdGenre(Long.valueOf(2));
+        model.addAttribute("list5VPopTrack",list5VPopTrack);
         model.addAttribute("listTrack", trackList);
         model.addAttribute("listAlbum", albumService.findTop5Album());
         model.addAttribute("listArtistViral", artistService.findList5Artist());
@@ -181,6 +183,9 @@ public class IndexController {
             CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
             User user = customUserDetail.getUser();
             model.addAttribute("user", user);
+            List<Playlist> listPlaylist = playlistService.findPlaylistByIdUser(user.getId());
+            model.addAttribute("listPlaylist", listPlaylist);
+
         }
         Album album = albumService.findById(idAlbum);
         model.addAttribute("albumDetail", album);

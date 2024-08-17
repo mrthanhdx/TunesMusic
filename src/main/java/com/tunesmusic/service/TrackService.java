@@ -14,4 +14,6 @@ public interface TrackService extends CommonService<Track>{
 
     void increasePlayCount(Long playCount,Long idSong);
 
+    List<Track> find5TrackByIdGenre(Long idGenre);
+
 }

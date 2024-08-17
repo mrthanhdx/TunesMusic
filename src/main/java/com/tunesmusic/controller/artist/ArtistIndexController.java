@@ -52,6 +52,8 @@ public class ArtistIndexController {
         }
         List<Track> trackList = trackService.findTop5Track();
         model.addAttribute("listTrack", trackList);
+        List<Track> list5VPopTrack = trackService.find5TrackByIdGenre(Long.valueOf(2));
+        model.addAttribute("list5VPopTrack",list5VPopTrack);
         model.addAttribute("listAlbum", albumService.findTop5Album());
         model.addAttribute("listArtistViral", artistService.findList5Artist());
         return "/artist/index";
@@ -180,7 +182,8 @@ public class ArtistIndexController {
     public String openAlbumManagementPage(Authentication authentication, Model model) {
         CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
         User user = customUserDetail.getUser();
-        List<Album> listAlbum = albumService.getListAlbumByIdArtist(user.getId());
+        Artist artist = artistService.getArtistByIdUSer(user.getId());
+        List<Album> listAlbum = albumService.getListAlbumByIdArtist(artist.getId());
         model.addAttribute("user",user);
         model.addAttribute("listAlbum",listAlbum);
         return "/artist/album-management";

@@ -58,4 +58,9 @@ public class TrackServiceImpl implements TrackService {
     public void increasePlayCount(Long playCount, Long idSong) {
         trackRepository.increasePlayCount(playCount,idSong);
     }
+
+    @Override
+    public List<Track> find5TrackByIdGenre(Long idGenre) {
+        return trackRepository.find5TrackByIdGenre(idGenre);
+    }
 }
