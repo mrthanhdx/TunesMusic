@@ -12,6 +12,8 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -46,8 +48,24 @@ public class Artist {
     @Column(name = "follower")
     private Long follower;
 
+    @Transient
+    private Boolean isFollowing;
+
     @OneToMany(mappedBy = "artist", fetch = FetchType.EAGER)
     private List<Track> trackList = new ArrayList<>();
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(id, artist.id); // compare by ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
     // Getters and Setters
 }

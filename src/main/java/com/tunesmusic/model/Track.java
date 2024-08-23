@@ -31,6 +31,7 @@ public class Track {
 
     @ManyToOne
     @JoinColumn(name = "id_artist")
+
     private Artist artist;
 
     @Column(name = "track_name", nullable = false)

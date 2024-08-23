@@ -35,6 +35,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/tunesmusic/playlist").authenticated()
                         .requestMatchers("/tunesmusic/playlist/**").authenticated()
                         .requestMatchers("/tunesmusic/artist-following").authenticated()
+                        .requestMatchers("/tunesmusic/artist-following/**").authenticated()
                         .requestMatchers("/tunesmusic/remove-from-playlist/**").authenticated()
                         .requestMatchers("/tunesmusic/remove-from-favorite/**").authenticated()
                         .requestMatchers("/tunesmusic/**").permitAll()

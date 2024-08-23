@@ -39,7 +39,7 @@ public class Playlist {
     @Column(name = "day_created")
     private Date dayCreated;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "playlist_track",
             joinColumns = {@JoinColumn(name = "playlist_id", referencedColumnName = "id")},

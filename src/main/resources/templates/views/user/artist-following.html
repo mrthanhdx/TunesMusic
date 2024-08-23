@@ -19,28 +19,28 @@
                 <div class="artist-page-header">
                     <h3 class="title page">Artist following</h3>
                     <div class="search-bar row;">
-                        <input class="search-input" type="text" placeholder="Find your favorite artist">
-                        <a href="/user/search?search-name=#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26"
-                                 height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                            </svg>
-                        </a>
+                        <form onsubmit="handleSearchArtistFollowing(this,event)" th:action="@{/tunesmusic/artist-following/search}">
+                            <input class="search-input search-artist" type="text" placeholder="Find your favorite artist">
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                     <div class="category-artist">
-                        <a href="#">
-                            <button class="active">Following</button>
+                        <a href="/tunesmusic/artist-following">
+                            <button class="artist-following active">Following</button>
                         </a>
-                        <a href="#">
-                            <button>Popular Artist</button>
+                        <a href="/tunesmusic/artist-following/popular-artist" onclick="handlePopularArtist(this,event)">
+                            <button class="popular-artist">Popular Artist</button>
                         </a>
 
                     </div>
                 </div>
 
                 <div class="list-artist-following">
-                    <ul>
+                    <ul id="list-artist-display">
                         <li th:each="artist:${listArtistFollowing}">
                             <div class="result row">
                                 <a style="width: 68%" th:href="@{/tunesmusic/artist-profile(artistId = ${artist.id})}">
@@ -50,8 +50,7 @@
                                 <form th:id="|request-follow-form-${artist.id}|" style="width: 20%"
                                       th:action="@{/tunesmusic/artist-following/request-follow}"
                                       th:onsubmit="|requestFollowSubmit(event,${artist.id})|"
-                                      method="post"
-                                >
+                                      method="post">
                                     <div>
                                         <!--                                           <input  type="hidden" name="idArtist" th:id="|idArtist-${artist.id}|" th:value="${artist.id}">-->
                                         <button th:id="|btnFollow-${artist.id}|" type="submit" class="follow ">
@@ -68,7 +67,6 @@
                                 </form>
                             </div>
                         </li>
-
                     </ul>
 
                 </div>
